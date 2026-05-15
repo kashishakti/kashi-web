@@ -1,0 +1,842 @@
+/* ========== EKADASHI DETAILS PAGE STYLES ========== */
+
+/* Hero Section */
+.eka-hero {
+  position: relative;
+  background: linear-gradient(135deg, #2A1810 0%, #4A2818 60%, #7A1F1A 100%);
+  color: #fff;
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px) clamp(80px, 10vw, 120px);
+  overflow: hidden;
+}
+
+.eka-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20600%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22sky%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234A2818%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231E1410%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3CradialGradient%20id%3D%22sun%22%20cx%3D%220.7%22%20cy%3D%220.3%22%20r%3D%220.4%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23F8E8C4%22%20stop-opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23F8E8C4%22%20stop-opacity%3D%220%22%2F%3E%0A%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Crect%20width%3D%22800%22%20height%3D%22600%22%20fill%3D%22url(%23sky)%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%22560%22%20cy%3D%22180%22%20r%3D%22200%22%20fill%3D%22url(%23sun)%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M0%20420%20L100%20380%20L200%20410%20L320%20370%20L450%20400%20L600%20360%20L800%20400%20L800%20600%20L0%20600%20Z%22%20fill%3D%22%237A1F1A%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%3Crect%20x%3D%220%22%20y%3D%22500%22%20width%3D%22800%22%20height%3D%22100%22%20fill%3D%22%230A0604%22%2F%3E%0A%20%20%3Crect%20x%3D%220%22%20y%3D%22480%22%20width%3D%22800%22%20height%3D%2220%22%20fill%3D%22%237A1F1A%22%20opacity%3D%220.7%22%2F%3E%0A%20%20%3Crect%20x%3D%220%22%20y%3D%22460%22%20width%3D%22800%22%20height%3D%2220%22%20fill%3D%22%237A1F1A%22%20opacity%3D%220.5%22%2F%3E%0A%20%20%3Cg%20transform%3D%22translate(300%20250)%22%3E%0A%20%20%20%20%3Cpolygon%20points%3D%22-110%2C200%20-90%2C40%20-70%2C200%22%20fill%3D%22%230A0604%22%2F%3E%0A%20%20%20%20%3Cpolygon%20points%3D%22-90%2C40%20-85%2C30%20-80%2C40%22%20fill%3D%22%234A2818%22%2F%3E%0A%20%20%20%20%3Cpolygon%20points%3D%22120%2C200%20100%2C60%2080%2C200%22%20fill%3D%22%230A0604%22%2F%3E%0A%20%20%20%20%3Cpolygon%20points%3D%22100%2C60%20105%2C50%20110%2C60%22%20fill%3D%22%234A2818%22%2F%3E%0A%20%20%20%20%3Cpolygon%20points%3D%22-50%2C250%200%2C-30%2050%2C250%22%20fill%3D%22%230A0604%22%2F%3E%0A%20%20%20%20%3Cpolygon%20points%3D%22-30%2C200%200%2C30%2030%2C200%22%20fill%3D%22%237A1F1A%22%20opacity%3D%220.6%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%220%22%20cy%3D%22-30%22%20r%3D%228%22%20fill%3D%22%234A2818%22%2F%3E%0A%20%20%20%20%3Cpolygon%20points%3D%22-3%2C-38%200%2C-55%203%2C-38%22%20fill%3D%22%234A2818%22%2F%3E%0A%20%20%20%20%3Crect%20x%3D%22-130%22%20y%3D%22200%22%20width%3D%22260%22%20height%3D%2260%22%20fill%3D%22%230A0604%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M-15%20260%20L-15%20220%20Q0%20200%2015%20220%20L15%20260%20Z%22%20fill%3D%22%231E1410%22%20opacity%3D%220.4%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.eka-hero::after {
+  content: '';
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 154, 43, 0.4) 0%, transparent 70%);
+}
+
+.eka-hero-inner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(40px, 5vw, 72px);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .eka-hero-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eka-breadcrumbs {
+  display: flex;
+  gap: 8px;
+  font-size: clamp(11px, 2vw, 12px);
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: clamp(16px, 3vw, 32px);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.eka-breadcrumbs a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.eka-breadcrumbs a:hover {
+  color: #fff;
+}
+
+.eka-breadcrumbs .sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.eka-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(14px, 3vw, 18px);
+  color: var(--gold-bright);
+  margin-bottom: clamp(12px, 2vw, 16px);
+}
+
+.eka-eyebrow::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--gold-bright);
+  opacity: 0.6;
+}
+
+.eka-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(36px, 8vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin-bottom: clamp(8px, 2vw, 12px);
+}
+
+.eka-title-deva {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(20px, 4vw, 32px);
+  color: var(--gold-bright);
+  margin-bottom: clamp(16px, 3vw, 24px);
+  opacity: 0.9;
+}
+
+.eka-subtitle {
+  font-size: clamp(14px, 3vw, 17px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 540px;
+  margin-bottom: clamp(24px, 5vw, 40px);
+}
+
+.eka-meta-row {
+  display: flex;
+  gap: clamp(16px, 3vw, 32px);
+  flex-wrap: wrap;
+  padding-top: clamp(16px, 3vw, 24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.eka-meta {
+  font-size: clamp(12px, 2vw, 13px);
+  min-width: 130px;
+}
+
+.eka-meta-label {
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.eka-meta-value {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Feature Card */
+.eka-feature-card {
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: clamp(12px, 3vw, 20px);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  border: 4px solid rgba(255, 255, 255, 0.08);
+}
+
+.eka-feature-img {
+  height: clamp(200px, 30vw, 280px);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.eka-feature-img::after {
+  /* content: 'विष्णु'; */
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 18px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.eka-feature-body {
+  padding: clamp(20px, 4vw, 32px);
+}
+
+.eka-feature-eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.eka-feature-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 500;
+  margin-bottom: clamp(16px, 3vw, 24px);
+  line-height: 1.2;
+}
+
+.eka-dates-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  margin: 0 calc(-1 * clamp(20px, 4vw, 32px)) calc(-1 * clamp(20px, 4vw, 32px));
+}
+
+.eka-date-cell {
+  padding: clamp(14px, 3vw, 20px) clamp(16px, 3vw, 32px);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.eka-date-cell:nth-child(2n) {
+  border-right: none;
+}
+
+.eka-date-cell:nth-last-child(-n + 2) {
+  border-bottom: none;
+}
+
+.eka-date-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+
+.eka-date-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 500;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.eka-date-sub {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+/* Content Body */
+.eka-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: clamp(40px, 8vw, 64px);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px);
+}
+
+@media (max-width: 1024px) {
+  .eka-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eka-content {
+  min-width: 0;
+}
+
+.eka-content h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(24px, 5vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(12px, 2vw, 20px);
+  margin-top: clamp(32px, 5vw, 56px);
+  color: var(--ink);
+}
+
+.eka-content h2:first-child {
+  margin-top: 0;
+}
+
+.eka-content h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(18px, 3vw, 22px);
+  margin-bottom: 12px;
+  margin-top: clamp(20px, 3vw, 32px);
+  color: var(--ink);
+}
+
+.eka-content p {
+  font-size: clamp(14px, 2vw, 17px);
+  line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: clamp(12px, 2vw, 18px);
+}
+
+.eka-content p.lead {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(16px, 3vw, 22px);
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: clamp(20px, 3vw, 32px);
+  padding-left: clamp(12px, 3vw, 20px);
+  border-left: 3px solid var(--accent);
+}
+
+.eka-content ul {
+  margin: clamp(12px, 2vw, 16px) 0 clamp(16px, 3vw, 24px) clamp(16px, 3vw, 20px);
+}
+.eka-content ol {
+  margin: clamp(12px, 2vw, 16px) 0 clamp(16px, 3vw, 24px) clamp(16px, 3vw, 20px);
+}
+
+.eka-content li {
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin-bottom: clamp(6px, 1vw, 8px);
+}
+
+.eka-callout {
+  background: #FCEBD5;
+  border-radius: 12px;
+  padding: clamp(16px, 3vw, 24px) clamp(16px, 3vw, 28px);
+  border-left: 4px solid var(--gold);
+  margin: clamp(20px, 3vw, 32px) 0;
+}
+
+.eka-callout-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.eka-callout p {
+  font-size: clamp(13px, 2vw, 15px);
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+/* Sidebar */
+.eka-side {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+@media (max-width: 1024px) {
+  .eka-side {
+    display: none;
+  }
+}
+
+.eka-side-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(16px, 3vw, 24px);
+  margin-bottom: 20px;
+}
+
+.eka-side-card h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 18px);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+}
+
+.eka-side-toc {
+  list-style: none;
+  padding: 0;
+}
+
+.eka-side-toc li {
+  margin-bottom: 10px;
+}
+
+.eka-side-toc a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  text-decoration: none;
+  padding: 6px 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.eka-side-toc a::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+
+.eka-side-toc a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.eka-side-toc a.active::before {
+  background: var(--accent);
+  width: 6px;
+  height: 6px;
+}
+
+.eka-share {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.eka-share-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink-mid);
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.eka-share-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.eka-share-btn.wa {
+  background: #25D366;
+  color: #fff;
+  border-color: #25D366;
+  width: auto;
+  padding: 0 16px;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.eka-share-btn.wa:hover {
+  filter: brightness(1.1);
+}
+
+/* FAQ Section */
+.eka-faq-section {
+  background: var(--bg-alt);
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.eka-faq-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.eka-faq-head {
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.eka-faq-head h2 {
+  font-family: 'Fraunces', serif !important;
+  font-weight: 500 !important;
+  font-size: clamp(28px, 6vw, 44px) !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.eka-faq-head p {
+  font-size: clamp(14px, 2vw, 16px) !important;
+  color: var(--ink-muted) !important;
+}
+
+.eka-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eka-faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(14px, 3vw, 20px) clamp(16px, 3vw, 24px);
+  transition: all 0.2s;
+}
+
+.eka-faq-item:hover {
+  border-color: var(--accent);
+}
+
+.eka-faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.4;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.eka-faq-q .icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.eka-faq-q .icon::after {
+  font-size: 16px;
+}
+
+.eka-faq-item.closed .eka-faq-a {
+  display: none;
+}
+
+.eka-faq-item.closed .eka-faq-q .icon::after {
+  content: '+';
+}
+
+.eka-faq-item:not(.closed) .eka-faq-q .icon::after {
+  content: '−';
+}
+
+.eka-faq-a {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-soft);
+  font-size: clamp(13px, 2vw, 15px);
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+
+/* Page Error */
+.page-error {
+  text-align: center;
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px);
+}
+
+/* Link Button */
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Recommended Articles Section */
+.eka-related-section {
+  background: var(--bg-alt);
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px);
+  border-top: 1px solid var(--border);
+}
+
+.eka-related-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.eka-related-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: clamp(32px, 5vw, 40px);
+  gap: clamp(16px, 3vw, 24px);
+  flex-wrap: wrap;
+}
+
+.eka-related-head h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 6vw, 44px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.eka-related-head .eyebrow {
+  margin-bottom: 8px;
+}
+
+.eka-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 32px);
+}
+
+@media (max-width: 1024px) {
+  .eka-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .eka-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.article-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.article-card-img {
+  height: clamp(180px, 20vw, 220px);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.recom-card-img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+}
+/* Responsive adjustments */
+@media (min-width: 1100px) {
+  .recom-card-img {
+    height: 220px;
+  }
+}
+
+.article-card-body {
+  padding: clamp(16px, 3vw, 24px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card-tag {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.article-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.article-card-excerpt {
+  font-size: clamp(13px, 2vw, 14px);
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.article-card-meta {
+  font-size: 12px;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.article-card-meta .dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+
+/* Next Ekadashi CTA */
+.eka-next {
+  background: var(--maroon);
+  color: #fff;
+  padding: clamp(40px, 8vw, 60px) clamp(16px, 5vw, 40px);
+  position: relative;
+  overflow: hidden;
+}
+
+.eka-next::before {
+  content: '॥ ॐ ॥';
+  position: absolute;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(120px, 20vw, 240px);
+  right: -40px;
+  bottom: -100px;
+  color: rgba(255, 255, 255, 0.04);
+}
+
+.eka-next-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(24px, 5vw, 40px);
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .eka-next-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.eka-next-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 12px;
+}
+
+.eka-next-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 6vw, 44px);
+  line-height: 1.1;
+  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.eka-next-deva {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(16px, 3vw, 22px);
+  color: var(--gold-bright);
+  opacity: 0.85;
+}
+
+.eka-next-meta {
+  display: flex;
+  gap: clamp(16px, 3vw, 32px);
+  margin-top: 24px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  flex-wrap: wrap;
+}
+
+.eka-next-meta strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Page Divider */
+.page-divider {
+  margin: clamp(40px, 8vw, 80px) auto;
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 24px);
+  color: var(--ink-faint);
+  padding: 0 clamp(16px, 5vw, 40px);
+  margin-bottom: 20px;
+}
+
+.page-divider::before,
+.page-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.page-divider-mark {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(14px, 2vw, 22px);
+  color: var(--accent);
+  letter-spacing: 0.4em;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .eka-hero-inner {
+    gap: clamp(24px, 5vw, 40px);
+  }
+
+  .eka-feature-card {
+    border-radius: 12px;
+  }
+
+  .eka-body {
+    grid-template-columns: 1fr;
+  }
+
+  .eka-feature-img {
+    height: 200px;
+  }
+}

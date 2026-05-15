@@ -1,2 +1,1 @@
-# kashi-web
-project setup
+# myproject

@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://productive-breeze-327fa74162.strapiapp.com/api'
