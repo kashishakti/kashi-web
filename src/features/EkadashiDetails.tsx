@@ -92,10 +92,13 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
                 </span>
               ))}
             </h1>
-            <div className="eka-title-deva">{'not available'}</div>
-            <p className="eka-subtitle">
+            {/* <div className="eka-title-deva">{'not available'}</div> */}
+            <p className="eka-title-deva">
               {ekadashiDetailData?.ShortDescription}
             </p>
+            {/* <p className="eka-subtitle">
+              {ekadashiDetailData?.ShortDescription}
+            </p> */}
             <div className="eka-meta-row">
               <div className="eka-meta">
                 <div className="eka-meta-label">Vikrama Samvata</div>
