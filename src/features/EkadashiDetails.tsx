@@ -12,12 +12,12 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<string>('eka-significance');
 
+  const { ekadashiDetailData } = useSelector((state: RootState) => state.detail);
   useEffect(() => {
-    if (slug) {
+    if (!ekadashiDetailData) {
       dispatch(fetchEkadashiDetails(slug))
     }
   }, [slug]);
-  const { ekadashiDetailData } = useSelector((state: RootState) => state.detail);
 
   const recommendedData = useMemo(() => {
     const temples = ekadashiDetailData?.EkadashiBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-temples')?.temples?.map((temple: any) => ({ ... temple, type: 'Temple', id: `temple-${temple.id}`}));

@@ -45,9 +45,8 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 const Home: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  const { loading, error, homeData } = useSelector((state: RootState) => state.home);
+  const { error, homeData } = useSelector((state: RootState) => state.home);
   const { nearestData } = useSelector((state: RootState) => state.global);
-  const hasFetched = useRef(false);
 
   const [now, setNow] = React.useState(0);
   React.useEffect(() => {
@@ -79,11 +78,10 @@ const Home: React.FC = () => {
   }, [nearestData, now]);
 
   useEffect(() => {
-    if (!hasFetched.current) {
-      hasFetched.current = true;
+    if (!homeData) {
       dispatch(fetchHomeData());
     }
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (error) {
@@ -255,14 +253,14 @@ const Home: React.FC = () => {
          <div>
             <SectionHeader title={homeData?.FeaturedVrats?.heading || ''} sub={homeData?.FeaturedVrats?.Description || ''} action={<button onClick={() => {homeData?.FeaturedVrats?.VratLink?.isExternal ? handleExternalLink(homeData?.FeaturedVrats?.VratLink?.href) : router.push(homeData?.FeaturedVrats?.VratLink?.href || '/')}} className="btn-link">{`${homeData?.FeaturedVrats?.VratLink?.label || ''} →`}</button>}/>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(12px, 2vw, 16px)' }}>
-               {homeData?.FeaturedVrats?.vrat_kathas?.map((katha: { id?: number; FeaturedImage?: { url?: string}; Title?: string; ShortDescription?: string }) => (
+               {homeData?.FeaturedVrats?.vrat_kathas?.map((katha: { id?: number; Slug: string; FeaturedImage?: { url?: string}; Title?: string; ShortDescription?: string }) => (
                  <div key={katha?.id} className="card card-hover katha-card" style={{ display: 'flex', width: '100%', padding: '12px 14px', alignItems: 'center', cursor: 'pointer', gap: '12px', textAlign: 'left' }}>
                     <div className="bg-image-cover" style={{ width: 72, height: 72, minWidth: 72, borderRadius: 12, backgroundImage: `url(${katha?.FeaturedImage?.url || ''})`, backgroundColor: 'grey', alignSelf: 'baseline' }}></div>
                     <div className="alignMobile" style={{ flex: 1 }}>
                        <h4 className="serif" style={{ fontSize: 16, fontWeight: 600, color: 'var(--ink)', marginBottom: 4 }}>{katha?.Title}</h4>
                        <p style={{ fontSize: 13, color: 'var(--ink-mid)', lineHeight: 1.5 }}>{katha?.ShortDescription}</p>
                     </div>
-                    <button className="btn btn-ghost btn-sm" style={{ borderRadius: 100, whiteSpace: 'nowrap', padding: '8px 12px', alignSelf: 'flex-start' }}>Read 📖</button>
+                    <button onClick={() => router.push(`/vrat-katha/${katha?.Slug}`)} className="btn btn-ghost btn-sm" style={{ borderRadius: 100, whiteSpace: 'nowrap', padding: '8px 12px', alignSelf: 'flex-start' }}>Read 📖</button>
                  </div>
                ))}
             </div>

@@ -5,20 +5,17 @@ import './EkadashiDetails.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchVratKathaDetails } from '../store/detailSlice';
 import { AppDispatch, RootState } from '../store/store';
-import { formatDate, formatDateTime, getDayFromDate } from '../common/functions';
 
 const VratKathaDetails = ({ slug }: { slug: string }) => {
   const dispatch = useDispatch<AppDispatch>();
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState<string>('eka-significance');
 
+  const { vratKathaDetailData } = useSelector((state: RootState) => state.detail);
   useEffect(() => {
-    if (slug) {
-      dispatch(fetchVratKathaDetails(slug));
+    if (!vratKathaDetailData) {
+      dispatch(fetchVratKathaDetails(slug))
     }
-  }, [slug]);
-  const { ekadashiDetailData, vratKathaDetailData } = useSelector((state: RootState) => state.detail);
-  console.log('Vrat Katha Detail Data:1111', vratKathaDetailData);
+  }, [slug])
 
   const recommendedData = useMemo(() => {
     const temples = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-temples')?.temples?.map((temple: any) => ({ ... temple, type: 'Temple', id: `temple-${temple.id}`}));
