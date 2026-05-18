@@ -12,15 +12,28 @@ export const fetchEkadashiDetails = createAsyncThunk(
     return data
   }
 )
+export const fetchVratKathaDetails = createAsyncThunk(
+  'detail/fetchVratKathaDetails',
+  async (slug: string) => {
+    const response = await fetch(`${BASE_URL}/vrat-kathas/slug/${slug}`)
+    if (!response.ok) {
+      throw new Error('Failed to fetch vrat katha details')
+    }
+    const data = await response.json()
+    return data
+  }
+)
 
 interface DetailState {
   ekadashiDetailData: any
+  vratKathaDetailData: any
   loading: boolean
   error: string | null
 }
 
 const initialState: DetailState = {
   ekadashiDetailData: null,
+  vratKathaDetailData: null,
   loading: false,
   error: null,
 }
@@ -40,6 +53,18 @@ const detailSlice = createSlice({
         state.ekadashiDetailData = action.payload
       })
       .addCase(fetchEkadashiDetails.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message || 'An error occurred'
+      })
+      .addCase(fetchVratKathaDetails.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchVratKathaDetails.fulfilled, (state, action) => {
+        state.loading = false
+        state.vratKathaDetailData = action.payload
+      })
+      .addCase(fetchVratKathaDetails.rejected, (state, action) => {
         state.loading = false
         state.error = action.error.message || 'An error occurred'
       })
