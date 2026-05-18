@@ -12,9 +12,7 @@ const VratKathaDetails = ({ slug }: { slug: string }) => {
 
   const { vratKathaDetailData } = useSelector((state: RootState) => state.detail);
   useEffect(() => {
-    if (!vratKathaDetailData) {
       dispatch(fetchVratKathaDetails(slug))
-    }
   }, [slug])
 
   const recommendedData = useMemo(() => {

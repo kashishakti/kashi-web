@@ -78,9 +78,7 @@ const Home: React.FC = () => {
   }, [nearestData, now]);
 
   useEffect(() => {
-    if (!homeData) {
-      dispatch(fetchHomeData());
-    }
+    dispatch(fetchHomeData());
   }, []);
 
   useEffect(() => {

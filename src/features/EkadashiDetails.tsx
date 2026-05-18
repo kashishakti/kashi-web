@@ -14,9 +14,7 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
 
   const { ekadashiDetailData } = useSelector((state: RootState) => state.detail);
   useEffect(() => {
-    if (!ekadashiDetailData) {
       dispatch(fetchEkadashiDetails(slug))
-    }
   }, [slug]);
 
   const recommendedData = useMemo(() => {
@@ -266,6 +264,8 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
                 title={item?.Title}
                 excerpt={item?.ShortDescription}
                 bgImg={item?.FeaturedImage?.url || null}
+                slug={item?.Slug}
+                router={router}
               />
             ))}
           </div>
@@ -310,11 +310,28 @@ interface ArticleCardProps {
   title: string;
   excerpt: string;
   bgImg: string;
+  slug: string;
+  router: any;
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ tag, title, excerpt, bgImg }) => {
+const getLink = (type: string, slug: string) => {
+  switch (type) {
+    case 'Vrat Katha':
+      return `/vrat-katha/${slug}`;
+      case 'Temple':
+        return `/temple/${slug}`;
+      case 'Festival':
+        return `/festival/${slug}`;
+      case 'Puja Vidhi':
+        return `/puja-vidhi/${slug}`;
+    default:
+      return '/';
+  }
+}
+
+const ArticleCard: React.FC<ArticleCardProps> = ({ tag, title, excerpt, bgImg, slug, router }) => {
   return (
-    <a href="#" className="article-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+    <a onClick={() => router.push(getLink(tag, slug))} className="article-card" style={{ textDecoration: 'none', color: 'inherit' }}>
       <div className="article-card-img">
         <img className="recom-card-img" src={bgImg} alt={title} />
       </div>
