@@ -64,6 +64,18 @@
   padding: 80px 40px 120px;
   overflow: hidden;
 }
+.purnima-hero::after {
+  content: '';
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253, 240, 204, 0.18) 0%, rgba(200, 154, 43, 0.08) 55%, transparent 80%);
+  pointer-events: none;
+}
 
 .purnima-stars {
   position: absolute;
@@ -102,7 +114,15 @@
   background: rgba(210, 186, 120, 0.5);
   box-shadow: 40px 32px 0 12px rgba(210, 186, 120, 0.35), 60px 14px 0 8px rgba(210, 186, 120, 0.28);
 }
-.purnima-hero::after {
+
+.amavasya-hero {
+  position: relative;
+  background: linear-gradient(135deg, #040408 0%, #0A080C 50%, #060408 100%);
+  color: #fff;
+  padding: 80px 40px 120px;
+  overflow: hidden;
+}
+.amavasya-hero::after {
   content: '';
   position: absolute;
   right: 80px;

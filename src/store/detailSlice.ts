@@ -34,11 +34,23 @@ export const fetchPurnimaDetails = createAsyncThunk(
     return data
   }
 )
+export const fetchAmavasyaDetails = createAsyncThunk(
+  'detail/fetchAmavasyaDetails',
+  async (slug: string) => {
+    const response = await fetch(`${BASE_URL}/amavasyas/slug/${slug}`)
+    if (!response.ok) {
+      throw new Error('Failed to fetch amavasya details')
+    }
+    const data = await response.json()
+    return data
+  }
+)
 
 interface DetailState {
   ekadashiDetailData: any
   vratKathaDetailData: any
   purnimaDetailData: any
+  amavasyaDetailData: any
   loading: boolean
   error: string | null
 }
@@ -47,6 +59,7 @@ const initialState: DetailState = {
   ekadashiDetailData: null,
   vratKathaDetailData: null,
   purnimaDetailData: null,
+  amavasyaDetailData: null,
   loading: false,
   error: null,
 }
@@ -90,6 +103,18 @@ const detailSlice = createSlice({
         state.purnimaDetailData = action.payload
       })
       .addCase(fetchPurnimaDetails.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message || 'An error occurred'
+      })
+      .addCase(fetchAmavasyaDetails.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchAmavasyaDetails.fulfilled, (state, action) => {
+        state.loading = false
+        state.amavasyaDetailData = action.payload
+      })
+      .addCase(fetchAmavasyaDetails.rejected, (state, action) => {
         state.loading = false
         state.error = action.error.message || 'An error occurred'
       })

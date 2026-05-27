@@ -56,8 +56,6 @@ const Home: React.FC = () => {
   }, []);
 
   const [d, h, m, s, lunarData] = useMemo(() => {
-    if (!nearestData?.upcomingFestival?.Date) return [0,0,0,0, []];
-
     const targetDate = new Date(
       nearestData?.upcomingFestival?.Date + "T00:00:00"
     );
@@ -73,6 +71,7 @@ const Home: React.FC = () => {
     const nearestPurnima = {...nearestData?.upcomingPurnima, tag: 'Purnima', Date: nearestData?.upcomingPurnima?.PurnimaDate};
 
     const lunarData = [nearestAmavasya, nearestEkadashi, nearestPurnima, nearestFestival];
+    if (!nearestData?.upcomingFestival?.Date) return [0,0,0,0, lunarData];
     return [d, h, m, s, lunarData];
 
   }, [nearestData, now]);
