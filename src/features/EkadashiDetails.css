@@ -31,6 +31,90 @@
   background: radial-gradient(circle, rgba(200, 154, 43, 0.4) 0%, transparent 70%);
 }
 
+.vrat-hero {
+  position: relative;
+  background: linear-gradient(135deg, #2A1810 0%, #4A2818 60%, #7A1F1A 100%);
+  color: #fff;
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px) clamp(80px, 10vw, 120px);
+  overflow: hidden;
+}
+
+.vrat-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 68% 32%, rgba(200, 154, 43, 0.3) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.vrat-hero::after {
+  content: '';
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 154, 43, 0.4) 0%, transparent 70%);
+}
+.purnima-hero {
+  position: relative;
+  background: linear-gradient(135deg, #0A1428 0%, #122040 50%, #1A1050 100%);
+  color: #fff;
+  padding: 80px 40px 120px;
+  overflow: hidden;
+}
+
+.purnima-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1px), radial-gradient(circle, rgba(255, 255, 255, 0.6) 1px, transparent 1px), radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+  background-size: 280px 220px, 180px 160px, 340px 280px;
+  background-position: 42px 28px, 90px 70px, 20px 120px;
+}
+.purnima-moon {
+  position: absolute;
+  left: 30%;
+  top: 33%;
+  transform: translateY(-44%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, #FFF8E8, #F8E8C4 55%, #E8CC90);
+  box-shadow: 0 0 80px rgba(248, 232, 196, 0.2), 0 0 160px rgba(200, 154, 43, 0.1);
+  opacity: 0.88;
+}
+@media (max-width: 1024px) {
+  .purnima-moon {
+    top: 20%;
+  }
+}
+
+.purnima-moon::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 29px;
+  width: 25px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(210, 186, 120, 0.5);
+  box-shadow: 40px 32px 0 12px rgba(210, 186, 120, 0.35), 60px 14px 0 8px rgba(210, 186, 120, 0.28);
+}
+.purnima-hero::after {
+  content: '';
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253, 240, 204, 0.18) 0%, rgba(200, 154, 43, 0.08) 55%, transparent 80%);
+  pointer-events: none;
+}
+
 .eka-hero-inner {
   position: relative;
   max-width: 1280px;
@@ -250,14 +334,23 @@
   padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px);
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) { */
+@media (max-width: 850px) {
   .eka-body {
     grid-template-columns: 1fr;
+  }
+  .eka-content {
+    order: 2 !important;
+  }
+  .eka-side {
+    order: 1 !important;
+    position: unset !important;
   }
 }
 
 .eka-content {
   min-width: 0;
+  order: 1;
 }
 
 .eka-content h2 {
@@ -344,12 +437,7 @@
   position: sticky;
   top: 96px;
   align-self: start;
-}
-
-@media (max-width: 1024px) {
-  .eka-side {
-    display: none;
-  }
+  order: 2;
 }
 
 .eka-side-card {

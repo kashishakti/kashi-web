@@ -23,10 +23,22 @@ export const fetchVratKathaDetails = createAsyncThunk(
     return data
   }
 )
+export const fetchPurnimaDetails = createAsyncThunk(
+  'detail/fetchPurnimaDetails',
+  async (slug: string) => {
+    const response = await fetch(`${BASE_URL}/purnimas/slug/${slug}`)
+    if (!response.ok) {
+      throw new Error('Failed to fetch purnima details')
+    }
+    const data = await response.json()
+    return data
+  }
+)
 
 interface DetailState {
   ekadashiDetailData: any
   vratKathaDetailData: any
+  purnimaDetailData: any
   loading: boolean
   error: string | null
 }
@@ -34,6 +46,7 @@ interface DetailState {
 const initialState: DetailState = {
   ekadashiDetailData: null,
   vratKathaDetailData: null,
+  purnimaDetailData: null,
   loading: false,
   error: null,
 }
@@ -65,6 +78,18 @@ const detailSlice = createSlice({
         state.vratKathaDetailData = action.payload
       })
       .addCase(fetchVratKathaDetails.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message || 'An error occurred'
+      })
+      .addCase(fetchPurnimaDetails.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchPurnimaDetails.fulfilled, (state, action) => {
+        state.loading = false
+        state.purnimaDetailData = action.payload
+      })
+      .addCase(fetchPurnimaDetails.rejected, (state, action) => {
         state.loading = false
         state.error = action.error.message || 'An error occurred'
       })

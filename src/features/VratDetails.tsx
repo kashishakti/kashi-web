@@ -66,7 +66,7 @@ const VratKathaDetails = ({ slug }: { slug: string }) => {
   return (
     <div style={{ paddingBottom: 0 }}>
       {/* Hero Section */}
-      <div className="eka-hero" style={{ paddingTop: '122px' }}>
+      <div className="vrat-hero" style={{ paddingTop: '122px' }}>
         <div className="eka-hero-inner">
           <div>
             {/* <div className="eka-eyebrow">{vratKathaDetailData?.EkadashiMonth?.Month} · {vratKathaDetailData?.EkadashiPaksha} · {vratKathaDetailData?.Date?.slice(0,4)}</div> */}
@@ -251,7 +251,7 @@ interface ArticleCardProps {
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ tag, title, excerpt, bgImg }) => {
   return (
-    <a href="#" className="article-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+    <a href="#" className="article-card" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
       <div className="article-card-img">
         <img className="recom-card-img" src={bgImg} alt={title} />
       </div>

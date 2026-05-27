@@ -3,27 +3,27 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import './EkadashiDetails.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchEkadashiDetails } from '../store/detailSlice';
+import { fetchPurnimaDetails } from '../store/detailSlice';
 import { AppDispatch, RootState } from '../store/store';
 import { formatDate, formatDateTime, getDayFromDate } from '../common/functions';
 
-const EkadashiDetails = ({ slug }: { slug: string }) => {
+const PurnimaDetails = ({ slug }: { slug: string }) => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<string>('eka-significance');
 
-  const { ekadashiDetailData } = useSelector((state: RootState) => state.detail);
+  const { purnimaDetailData } = useSelector((state: RootState) => state.detail);
   useEffect(() => {
-      dispatch(fetchEkadashiDetails(slug))
+      dispatch(fetchPurnimaDetails(slug))
   }, [slug]);
 
   const recommendedData = useMemo(() => {
-    const temples = ekadashiDetailData?.EkadashiBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-temples')?.temples?.map((temple: any) => ({ ... temple, type: 'Temple', id: `temple-${temple.id}`}));
-    const festivals = ekadashiDetailData?.EkadashiBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-festivals')?.festivals?.map((festival: any) => ({ ... festival, type: 'Festival', id: `festival-${festival.id}`}));
-    const pujaVidhis = ekadashiDetailData?.EkadashiBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-puja-vidhi')?.puja_vidhis?.map((puja: any) => ({ ... puja, type: 'Puja Vidhi', id: `puja-${puja.id}`}));
-    const vratKathas = ekadashiDetailData?.EkadashiBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-vrat-katha')?.vrat_kathas?.map((katha: any) => ({ ... katha, type: 'Vrat Katha', id: `katha-${katha.id}`}));
+    const temples = purnimaDetailData?.PurnimaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-temples')?.temples?.map((temple: any) => ({ ... temple, type: 'Temple', id: `temple-${temple.id}`}));
+    const festivals = purnimaDetailData?.PurnimaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-festivals')?.festivals?.map((festival: any) => ({ ... festival, type: 'Festival', id: `festival-${festival.id}`}));
+    const pujaVidhis = purnimaDetailData?.PurnimaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-puja-vidhi')?.puja_vidhis?.map((puja: any) => ({ ... puja, type: 'Puja Vidhi', id: `puja-${puja.id}`}));
+    const vratKathas = purnimaDetailData?.PurnimaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-vrat-katha')?.vrat_kathas?.map((katha: any) => ({ ... katha, type: 'Vrat Katha', id: `katha-${katha.id}`}));
     return [...(temples || []), ...(festivals || []), ...(pujaVidhis || []), ...(vratKathas || [])];
-  }, [ekadashiDetailData])
+  }, [purnimaDetailData])
   
 
   const handleTocClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
@@ -65,25 +65,17 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
     }
   }
 
-  // if (!ekadashiDetailData) {
-  //   return (
-  //     <div className="page-error" style={{ paddingTop: '120px', textAlign: 'center' }}>
-  //       <h2 style={{ fontSize: 'clamp(24px, 6vw, 36px)', color: 'var(--ink)', marginBottom: 16 }}>Ekadashi not found</h2>
-  //       <p style={{ color: 'var(--ink-muted)', marginBottom: 32 }}>The ekadashi you're looking for doesn't exist.</p>
-  //       <button className="btn btn-primary" onClick={() => router.push('/')}>Go back to home</button>
-  //     </div>
-  //   );
-  // }
-
   return (
     <div style={{ paddingBottom: 0 }}>
       {/* Hero Section */}
-      <div className="eka-hero" style={{ paddingTop: '122px' }}>
+      <div className="purnima-hero" style={{ paddingTop: '122px' }}>
+        <div className="purnima-stars"></div>
+        <div className="purnima-moon"></div>
         <div className="eka-hero-inner">
           <div>
-            <div className="eka-eyebrow">{ekadashiDetailData?.EkadashiMonth?.Month} · {ekadashiDetailData?.EkadashiPaksha} · {ekadashiDetailData?.Date?.slice(0,4)}</div>
+            <div className="eka-eyebrow">{purnimaDetailData?.PurnimaMonth?.Month} · {purnimaDetailData?.PurnimaDate?.slice(0,4)}</div>
             <h1 className="eka-title">
-              {ekadashiDetailData?.Title?.split(' ').map((word: string, index: number) => (
+              {purnimaDetailData?.Title?.split(' ').map((word: string, index: number) => (
                 <span key={index}>
                   {word}
                   <br />
@@ -92,27 +84,27 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
             </h1>
             {/* <div className="eka-title-deva">{'not available'}</div> */}
             <p className="eka-title-deva">
-              {ekadashiDetailData?.ShortDescription}
+              {purnimaDetailData?.ShortDescription}
             </p>
             {/* <p className="eka-subtitle">
-              {ekadashiDetailData?.ShortDescription}
+              {purnimaDetailData?.ShortDescription}
             </p> */}
             <div className="eka-meta-row">
               <div className="eka-meta">
                 <div className="eka-meta-label">Vikrama Samvata</div>
-                <div className="eka-meta-value">{ekadashiDetailData?.VikramSamvataYear}</div>
+                <div className="eka-meta-value">{purnimaDetailData?.VikramSamvataYear}</div>
               </div>
-              <div className="eka-meta">
+              {/* <div className="eka-meta">
                 <div className="eka-meta-label">Paksha</div>
-                <div className="eka-meta-value">{ekadashiDetailData?.EkadashiPaksha}</div>
-              </div>
+                <div className="eka-meta-value">{purnimaDetailData?.EkadashiPaksha}</div>
+              </div> */}
               <div className="eka-meta">
                 <div className="eka-meta-label">Hindu Month</div>
-                <div className="eka-meta-value">{ekadashiDetailData?.EkadashiMonth?.Month}</div>
+                <div className="eka-meta-value">{purnimaDetailData?.PurnimaMonth?.Month}</div>
               </div>
               <div className="eka-meta">
                 <div className="eka-meta-label">Deity</div>
-                <div className="eka-meta-value">{ekadashiDetailData?.Deity?.Deity}</div>
+                <div className="eka-meta-value">{purnimaDetailData?.Deity?.Deity}</div>
               </div>
             </div>
           </div>
@@ -120,32 +112,32 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
           {/* Feature Card */}
           <div className="eka-feature-card">
             <div className="eka-feature-img" style={{
-              background: `url("${ekadashiDetailData?.FeaturedImage?.url || ''}") center/cover no-repeat`
+              background: `url("${purnimaDetailData?.FeaturedImage?.url || ''}") center/cover no-repeat`
             }}></div>
             <div className="eka-feature-body">
               <div className="eka-feature-eyebrow">Observance Date</div>
-              <div className="eka-feature-title">{`${getDayFromDate(ekadashiDetailData?.Date || '')} • ${formatDate(ekadashiDetailData?.Date)}`}</div>
+              <div className="eka-feature-title">{`${getDayFromDate(purnimaDetailData?.PurnimaDate || '')} • ${formatDate(purnimaDetailData?.PurnimaDate)}`}</div>
               <div className="eka-dates-grid">
                 <div className="eka-date-cell">
                   <div className="eka-date-label">Tithi Begins</div>
-                  <div className="eka-date-value">{formatDateTime(ekadashiDetailData?.EkadashiTime?.StartTime || '').time}</div>
-                  <div className="eka-date-sub">{formatDateTime(ekadashiDetailData?.EkadashiTime?.StartTime || '').formattedDate}</div>
+                  <div className="eka-date-value">{formatDateTime(purnimaDetailData?.PurnimaTimings?.StartTime || '').time}</div>
+                  <div className="eka-date-sub">{formatDateTime(purnimaDetailData?.PurnimaTimings?.StartTime || '').formattedDate}</div>
                 </div>
                 <div className="eka-date-cell">
                   <div className="eka-date-label">Tithi Ends</div>
-                  <div className="eka-date-value">{formatDateTime(ekadashiDetailData?.EkadashiTime?.EndTime || '').time}</div>
-                  <div className="eka-date-sub">{formatDateTime(ekadashiDetailData?.EkadashiTime?.EndTime || '').formattedDate}</div>
+                  <div className="eka-date-value">{formatDateTime(purnimaDetailData?.PurnimaTimings?.EndTime || '').time}</div>
+                  <div className="eka-date-sub">{formatDateTime(purnimaDetailData?.PurnimaTimings?.EndTime || '').formattedDate}</div>
                 </div>
                 <div className="eka-date-cell">
-                  <div className="eka-date-label">Parana Begins</div>
-                  <div className="eka-date-value">{formatDateTime(ekadashiDetailData?.ParanaTime?.StartTime || '').time}</div>
-                  <div className="eka-date-sub">{formatDateTime(ekadashiDetailData?.ParanaTime?.StartTime || '').formattedDate}</div>
+                  <div className="eka-date-label">Moon Rise</div>
+                  <div className="eka-date-value">{formatDateTime(purnimaDetailData?.MoonriseTime || '').time}</div>
+                  <div className="eka-date-sub">{formatDateTime(purnimaDetailData?.MoonriseTime || '').formattedDate}</div>
                 </div>
-                <div className="eka-date-cell">
+                {/* <div className="eka-date-cell">
                   <div className="eka-date-label">Parana Ends</div>
-                  <div className="eka-date-value">{formatDateTime(ekadashiDetailData?.ParanaTime?.EndTime || '').time}</div>
-                  <div className="eka-date-sub">{formatDateTime(ekadashiDetailData?.ParanaTime?.EndTime || '').formattedDate}</div>
-                </div>
+                  <div className="eka-date-value">{formatDateTime(purnimaDetailData?.ParanaTime?.EndTime || '').time}</div>
+                  <div className="eka-date-sub">{formatDateTime(purnimaDetailData?.ParanaTime?.EndTime || '').formattedDate}</div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -155,7 +147,7 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
       {/* Content Body */}
       <div className="eka-body">
         <div className="eka-content">
-          {ekadashiDetailData?.Description?.map((description: { type?: string; level?: number; children?: { children?: { text?: string }[]; text?: string, bold?: boolean, italic?: boolean, type?: string, url?: string }[]; format?: string }, index: number) => {
+          {purnimaDetailData?.Description?.map((description: { type?: string; level?: number; children?: { children?: { text?: string }[]; text?: string, bold?: boolean, italic?: boolean, type?: string, url?: string }[]; format?: string }, index: number) => {
             if (description?.type === 'heading') {
               switch (description?.level) {
                 case 1:
@@ -189,10 +181,10 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
 
 
 
-          {ekadashiDetailData?.Notes?.trim()?.length > 0 && (
+          {purnimaDetailData?.Notes?.trim()?.length > 0 && (
             <div className="eka-callout">
               <div className="eka-callout-title">Important Notes</div>
-              <p>{ekadashiDetailData?.Notes}</p>
+              <p>{purnimaDetailData?.Notes}</p>
             </div>
           )}
 
@@ -203,7 +195,7 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
           <div className="eka-side-card">
             <h3>On This Page</h3>
             <ul className="eka-side-toc">
-              {ekadashiDetailData?.Description?.map((desc: { type?: string; id?: string; level: number; children?: { text?: string }[] }, index: number) => (desc?.type === 'heading' && desc?.level === 2 ? (
+              {purnimaDetailData?.Description?.map((desc: { type?: string; id?: string; level: number; children?: { text?: string }[] }, index: number) => (desc?.type === 'heading' && desc?.level === 2 ? (
                 <li key={index}>
                   <a href={`#${index}`} className={activeTab === String(index) ? 'active' : ''} onClick={(e) => handleTocClick(e, String(index))}>
                     {desc?.children?.[0]?.text}
@@ -230,10 +222,10 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
         <div className="eka-faq-wrap">
           <div className="eka-faq-head">
             <h2>Frequently Asked Questions</h2>
-            <p>Common queries about observing {ekadashiDetailData?.Title || 'Ekadashi'} correctly.</p>
+            <p>Common queries about observing {purnimaDetailData?.Title || 'Ekadashi'} correctly.</p>
           </div>
           <div className="eka-faq-list">
-            {ekadashiDetailData?.EkadashiBlock?.filter((block: { __component: string }) => block?.__component === 'shared.fa-qs')?.map((faqBlock: { id: number; Question: string; Answer: string }, index: number) => (
+            {purnimaDetailData?.PurnimaBlock?.filter((block: { __component: string }) => block?.__component === 'shared.fa-qs')?.map((faqBlock: { id: number; Question: string; Answer: string }, index: number) => (
               <FAQItem
                 key={faqBlock?.id}
                 question={faqBlock?.Question}
@@ -276,17 +268,16 @@ const EkadashiDetails = ({ slug }: { slug: string }) => {
       <div className="eka-next">
         <div className="eka-next-inner">
           <div>
-            <div className="eka-next-eyebrow">{`Up Next · ${ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.EkadashiPaksha} · ${ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.EkadashiMonth?.Month}`}</div>
-            <h2 className="eka-next-title">{ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.Title}</h2>
-            <div className="eka-next-deva">{ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.ShortDescription}</div>
+            <div className="eka-next-eyebrow">{`Up Next · ${purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.PurnimaMonth?.Month || ''}`}</div>
+            <h2 className="eka-next-title">{purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.Title}</h2>
+            <div className="eka-next-deva">{purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.ShortDescription}</div>
             <div className="eka-next-meta">
-              <span><strong>{formatDate(ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.Date)}</strong> · {getDayFromDate(ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.Date)}</span>
-              <span>Tithi begins <strong>{formatDateTime(ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.EkadashiTime?.StartTime || '').formattedDate} · {formatDateTime(ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.EkadashiTime?.StartTime || '').time}</strong></span>
-              <span>Parana <strong>{formatDateTime(ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.ParanaTime?.StartTime || '').formattedDate} · {formatDateTime(ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.ParanaTime?.StartTime || '').time}{' '}–{' '}{formatDateTime(ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.ParanaTime?.EndTime || '').time}</strong></span>
+              <span><strong>{formatDate(purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.PurnimaDate)}</strong> · {getDayFromDate(purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.PurnimaDate)}</span>
+              <span>Moon Rise <strong>{formatDateTime(purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.MoonriseTime || '').formattedDate} · {formatDateTime(purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.MoonriseTime || '').time}</strong></span>
             </div>
           </div>
-          <button className="btn btn-primary" style={{ background: 'var(--gold-bright)', borderColor: 'var(--gold-bright)', color: 'var(--ink)', padding: '16px 28px', fontSize: 15 }} onClick={() => router.push(ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.Slug ? `/ekadashi/${ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.Slug}` : '/') }>
-            {`View ${ekadashiDetailData?.NextEkadashiLink?.ekadashis?.[0]?.Title} →`}
+          <button className="btn btn-primary" style={{ background: 'var(--gold-bright)', borderColor: 'var(--gold-bright)', color: 'var(--ink)', padding: '16px 28px', fontSize: 15 }} onClick={() => router.push(purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.Slug ? `/purnima/${purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.Slug}` : '/') }>
+            {`View ${purnimaDetailData?.NextPurnimaLink?.purnimas?.[0]?.Title} →`}
           </button>
         </div>
       </div>
@@ -362,4 +353,4 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, defaultOpen = true 
   );
 };
 
-export default EkadashiDetails;
+export default PurnimaDetails;
