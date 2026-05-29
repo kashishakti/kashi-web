@@ -135,6 +135,33 @@
   pointer-events: none;
 }
 
+.pradosh-hero {
+  position: relative;
+  background: linear-gradient(135deg, #0C0A20 0%, #180C30 45%, #220A28 100%);
+  color: #fff;
+  padding: 80px 40px 120px;
+  overflow: hidden;
+}
+.pradosh-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, rgba(106, 90, 200, 0.22) 0%, transparent 60%);
+  pointer-events: none;
+}
+.pradosh-trishul {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.18;
+}
+@media (max-width: 1024px) {
+  .pradosh-trishul {
+    top: 30%;
+  }
+}
+
 .eka-hero-inner {
   position: relative;
   max-width: 1280px;
