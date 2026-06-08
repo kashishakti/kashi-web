@@ -1,10 +1,6 @@
 "use client"
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from "next/navigation"
-import toast from 'react-hot-toast';
-import { fetchHomeData } from '../store/homeSlice';
-import type { RootState, AppDispatch } from '../store/store';
 import { formatDate } from '../common/functions';
 
 interface SectionHeaderProps {
@@ -42,23 +38,25 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   );
 };
 
-const Home: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const router = useRouter();
-  const { error, homeData } = useSelector((state: RootState) => state.home);
-  const { nearestData } = useSelector((state: RootState) => state.global);
+interface HomeProps {
+  homeData: any
+  nearestData: any
+  serverNow: number
+}
 
-  const [now, setNow] = React.useState(0);
+const Home: React.FC<HomeProps> = ({ homeData, nearestData, serverNow }) => {
+  const router = useRouter();
+  console.log(serverNow, '1111server');
+
+  const [now, setNow] = React.useState(serverNow);
   React.useEffect(() => {
-    setNow(Date.now());
     const i = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(i);
   }, []);
 
   const [d, h, m, s, lunarData] = useMemo(() => {
-    const targetDate = new Date(
-      nearestData?.upcomingFestival?.Date + "T00:00:00"
-    );
+    const countdownDateString = nearestData?.upcomingFestival?.Date;
+    const targetDate = countdownDateString ? new Date(`${countdownDateString}T00:00:00`) : new Date(NaN);
     const diff = targetDate.getTime() - now;
     const d = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
     const h = Math.max(0, Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
@@ -71,20 +69,11 @@ const Home: React.FC = () => {
     const nearestPurnima = {...nearestData?.upcomingPurnima, tag: 'Purnima', Date: nearestData?.upcomingPurnima?.PurnimaDate};
 
     const lunarData = [nearestAmavasya, nearestEkadashi, nearestPurnima, nearestFestival];
-    if (!nearestData?.upcomingFestival?.Date) return [0,0,0,0, lunarData];
+    if (!countdownDateString) return [0,0,0,0, lunarData];
     return [d, h, m, s, lunarData];
 
   }, [nearestData, now]);
 
-  useEffect(() => {
-    dispatch(fetchHomeData());
-  }, []);
-
-  useEffect(() => {
-    if (error) {
-      toast.error(`Failed to load landing page data: ${error}`);
-    }
-  }, [error]);
 
   const handleExternalLink = (link: string) => {
     if (link?.length > 0) {

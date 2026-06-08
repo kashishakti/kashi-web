@@ -1,19 +1,15 @@
 "use client"
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import './EkadashiDetails.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchVratKathaDetails } from '../store/detailSlice';
-import { AppDispatch, RootState } from '../store/store';
 
-const VratKathaDetails = ({ slug }: { slug: string }) => {
-  const dispatch = useDispatch<AppDispatch>();
+interface VratKathaDetailsProps {
+  slug: string
+  vratKathaDetailData: any
+}
+
+const VratKathaDetails = ({ slug, vratKathaDetailData }: VratKathaDetailsProps) => {
   const [activeTab, setActiveTab] = useState<string>('eka-significance');
-
-  const { vratKathaDetailData } = useSelector((state: RootState) => state.detail);
-  useEffect(() => {
-      dispatch(fetchVratKathaDetails(slug))
-  }, [slug])
 
   const recommendedData = useMemo(() => {
     const temples = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-temples')?.temples?.map((temple: any) => ({ ... temple, type: 'Temple', id: `temple-${temple.id}`}));
