@@ -1,16 +1,11 @@
 'use client'
 import Link from "next/link"
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import './Navbar.css'
-import { useSelector } from 'react-redux'
-import { RootState } from '../store/store'
 
-const Navbar = () => {
+const Navbar = ({ headerData }: { headerData: any }) => {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { globalData } = useSelector((state: RootState) => state.global)
   const toggleMenu = () => setMenuOpen(!menuOpen)
-
-  const headerData = useMemo(() => globalData?.Header, [globalData])
 
   return (
     <>

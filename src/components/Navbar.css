@@ -48,11 +48,16 @@
   padding-top: 8px;
 }
 .nav-logo-image {
-  height: 50px;
-  width: 150px;
+  height: 130px;
+  width: 200px;
+  /* height: 50px; */
+  /* width: 150px; */
   object-fit: cover;
   margin-left: -6px;
   cursor: pointer;
+}
+.moveToTop30 {
+  margin-top: -40px;
 }
 
 .nav-logo:hover {

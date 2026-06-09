@@ -1,20 +1,14 @@
-'use client'
-import { useMemo } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 
-const Footer = () => {
-  const router = useRouter()
-  const { globalData } = useSelector((state: RootState) => state.global)
-
-  const footerData = useMemo(() => globalData?.Footer, [globalData])
+const Footer = ({ footerData }: { footerData: any }) => {
   return (
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-grid">
           <div>
-            <img onClick={() => router.push(footerData?.Logo?.href || '/')} src={footerData?.Logo?.image?.url || null} alt="Kashi Shakti" className='nav-logo-image' />
+            <Link href={footerData?.Logo?.href || '/'} className="nav-logo">
+              <img src={footerData?.Logo?.image?.url || null} alt="Kashi Shakti" className='nav-logo-image moveToTop30' />
+            </Link>
             <p className="footer-copy">
               {footerData?.BrandInformation || ''}
             </p>
@@ -24,7 +18,11 @@ const Footer = () => {
               <div key={menu.id}>
                 <div className="footer-heading">{menu?.title || ''}</div>
                   <div className="footer-links">
-                    {menu?.NavLink?.length ? menu?.NavLink?.map((nav) => <span key={nav?.id} onClick={() => { router.push(nav?.href || '/') }} className="footer-link">{nav?.label || ''}</span>) : null}
+                    {menu?.NavLink?.length ? menu?.NavLink?.map((nav) => (
+                      <Link key={nav?.id} href={nav?.href || '/'} className="footer-link">
+                        {nav?.label || ''}
+                      </Link>
+                    )) : null}
               </div>
               </div>
             ))}
