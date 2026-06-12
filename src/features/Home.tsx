@@ -46,7 +46,6 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ homeData, nearestData, serverNow }) => {
   const router = useRouter();
-  console.log(serverNow, '1111server');
 
   const [now, setNow] = React.useState(serverNow);
   React.useEffect(() => {
@@ -142,7 +141,7 @@ const Home: React.FC<HomeProps> = ({ homeData, nearestData, serverNow }) => {
             </div>
             
             {/* Festival Countdown */}
-            <div className="card" style={{ padding: 'clamp(20px, 4vw, 32px)', display: 'flex', flexDirection: 'column', gap: 'clamp(12px, 2vw, 16px)', boxShadow: 'var(--shadow-lg)', background: 'var(--bg-alt)' }}>
+            <div className="card" style={{ padding: 'clamp(20px, 4vw, 32px)', display: 'flex', flexDirection: 'column', gap: 'clamp(12px, 2vw, 16px)', boxShadow: 'var(--shadow-lg)', background: 'var(--bg-alt)', cursor: 'pointer' }} onClick={() => router.push(nearestData?.upcomingFestival?.Slug ? `/festival/${nearestData?.upcomingFestival?.Slug}` : '/')}>
                <div>
                   <div className="eyebrow" style={{ marginBottom: 8, color: 'var(--maroon)', width: '100%' }}>Major Festival Upcoming</div>
                   <h2 className="serif" style={{ fontSize: 'clamp(20px, 4vw, 24px)', color: 'var(--ink)', fontWeight: 600 }}>{nearestData?.upcomingFestival?.Title || ''}</h2>
@@ -179,7 +178,7 @@ const Home: React.FC<HomeProps> = ({ homeData, nearestData, serverNow }) => {
          <SectionHeader title="Sacred Lunar Days" sub="Track all upcoming observances based on your city's Panchang." />
          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 'clamp(12px, 3vw, 20px)', paddingTop: 10 }}>
             {lunarData?.map((t, idx) => (
-              <div key={idx} className="card card-hover" style={{ borderTop: t.highlight ? '4px solid var(--accent)' : '1px solid var(--border)' }}>
+              <div key={idx} className="card card-hover" style={{ borderTop: t.highlight ? '4px solid var(--accent)' : '1px solid var(--border)', cursor: 'pointer' }} onClick={() => router.push(`${t?.tag?.toLowerCase()}/${t?.Slug}`)}>
                  <div className="bg-image-cover" style={{ height: 'clamp(70px, 15vw, 100px)', backgroundImage: `url(${t?.FeaturedImage?.url || ''})` }}></div>
                  <div style={{ padding: 'clamp(12px, 2vw, 16px) clamp(12px, 2vw, 20px)' }}>
                      <div className="eyebrow" style={{ marginBottom: 6, color: t.highlight ? 'var(--accent)' : 'var(--ink-muted)', fontSize: 'clamp(8px, 1.5vw, 10px)' }}>Nearest {t?.tag}</div>

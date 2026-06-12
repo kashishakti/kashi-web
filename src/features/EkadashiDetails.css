@@ -31,6 +31,24 @@
   background: radial-gradient(circle, rgba(200, 154, 43, 0.4) 0%, transparent 70%);
 }
 
+.festival-hero {
+  position: relative;
+  background: linear-gradient(135deg, #10212A 0%, #1B3A52 45%, #2A4878 100%);
+  color: #fff;
+  padding: 76px 40px 110px;
+  overflow: hidden;
+}
+.festival-hero::after {
+  content: '';
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 154, 43, .4) 0%, transparent 70%);
+}
+
 .vrat-hero {
   position: relative;
   background: linear-gradient(135deg, #2A1810 0%, #4A2818 60%, #7A1F1A 100%);
@@ -448,6 +466,20 @@
 }
 .eka-content ol {
   margin: clamp(12px, 2vw, 16px) 0 clamp(16px, 3vw, 24px) clamp(16px, 3vw, 20px);
+}
+
+.eka-content img,
+.eka-content figure {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: clamp(16px, 2vw, 24px) auto;
+}
+
+.eka-content figure {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .eka-content li {
