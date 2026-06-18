@@ -41,23 +41,23 @@ const PradoshDetails = ({ slug, pradoshDetailData }: PradoshDetailsProps) => {
     }
   };
 
-  const renderChildText = (bold: boolean, italic: boolean, type: string, url: string, text: string, linkText: string) => {
+  const renderChildText = (bold: boolean, italic: boolean, type: string, url: string, text: string, linkText: string, key: React.Key) => {
     if (bold) {
-      return <strong key={text}>{text}</strong>;
+      return <strong key={key}>{text}</strong>;
     } else if (italic) {
-      return <em key={text}>{text}</em>;
+      return <em key={key}>{text}</em>;
     } else if (bold && italic) {
-      return <em key={text}><strong>{text}</strong></em>;
+      return <em key={key}><strong>{text}</strong></em>;
     } else if (type === 'link') {
-      return <a key={text} href={url} style={{ color: 'darkred', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer">{linkText}</a>;
+      return <a key={key} href={url} style={{ color: 'darkred', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer">{linkText}</a>;
     } else if (bold && type === 'link') {
-      return <a key={text} href={url} style={{ color: 'darkred', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer"><strong>{linkText}</strong></a>;
+      return <a key={key} href={url} style={{ color: 'darkred', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer"><strong>{linkText}</strong></a>;
     } else if (italic && type === 'link') {
-      return <a key={text} href={url} style={{ color: 'darkred', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer"><em>{linkText}</em></a>;
+      return <a key={key} href={url} style={{ color: 'darkred', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer"><em>{linkText}</em></a>;
     } else if (bold && italic && type === 'link') {
-      return <a key={text} href={url} style={{ color: 'darkred', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer"><em><strong>{linkText}</strong></em></a>;
+      return <a key={key} href={url} style={{ color: 'darkred', textDecoration: 'underline' }} target="_blank" rel="noopener noreferrer"><em><strong>{linkText}</strong></em></a>;
     } else {
-      return text || '';
+      return <React.Fragment key={key}>{text || ''}</React.Fragment>;
     }
   }
 
@@ -166,23 +166,23 @@ const PradoshDetails = ({ slug, pradoshDetailData }: PradoshDetailsProps) => {
             if (description?.type === 'heading') {
               switch (description?.level) {
                 case 1:
-                  return <h1 id={String(index)} key={index}>{description?.children?.map((child) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || ''))}</h1>;
+                  return <h1 id={String(index)} key={index}>{description?.children?.map((child, childIndex) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || '', childIndex))}</h1>;
                 case 2:
-                  return <h2 id={String(index)} key={index}>{description?.children?.map((child) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || ''))}</h2>;
+                  return <h2 id={String(index)} key={index}>{description?.children?.map((child, childIndex) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || '', childIndex))}</h2>;
                 case 3:
-                  return <h3 id={String(index)} key={index}>{description?.children?.map((child) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || ''))}</h3>;
+                  return <h3 id={String(index)} key={index}>{description?.children?.map((child, childIndex) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || '', childIndex))}</h3>;
                 default:
                   return null;
               }
             } else if (description?.type === 'paragraph') {
-              return <p key={index}>{description?.children?.map((child) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || ''))}</p>;
+              return <p key={index}>{description?.children?.map((child, childIndex) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || '', childIndex))}</p>;
               // return <p key={index} className="lead">{description?.children?.[0]?.text}</p>;
             } else if (description?.type === 'list') {
               switch (description?.format) {
                 case 'ordered':
-                  return <ol key={index}>{description?.children?.map((item: { children?: { text?: string, bold?: boolean, italic?: boolean, type?: string, url?: string, children?: { text?: string }[] }[] }, idx: number) => <li key={idx}>{item?.children?.map((child) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || ''))}</li>)}</ol>;
+                  return <ol key={index}>{description?.children?.map((item: { children?: { text?: string, bold?: boolean, italic?: boolean, type?: string, url?: string, children?: { text?: string }[] }[] }, idx: number) => <li key={idx}>{item?.children?.map((child, childIndex) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || '', childIndex))}</li>)}</ol>;
                 case 'unordered':
-                  return <ul key={index}>{description?.children?.map((item: { children?: { text?: string, bold?: boolean, italic?: boolean, type?: string, url?: string, children?: { text?: string }[] }[] }, idx: number) => <li key={idx}>{item?.children?.map((child) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || ''))}</li>)}</ul>;
+                  return <ul key={index}>{description?.children?.map((item: { children?: { text?: string, bold?: boolean, italic?: boolean, type?: string, url?: string, children?: { text?: string }[] }[] }, idx: number) => <li key={idx}>{item?.children?.map((child, childIndex) => renderChildText(child?.bold || false, child?.italic || false, child?.type || '', child?.url || '', child?.text || '', child?.children?.[0]?.text || '', childIndex))}</li>)}</ul>;
                 default:
                   return null;
               }

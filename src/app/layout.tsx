@@ -7,6 +7,8 @@ import ScrollToTop from "../components/ScrollToTop"
 import ToastProvider from "../components/ToastProvider"
 import GlobalLoader from "../components/GlobalLoader"
 import { BASE_URL } from "@/constants"
+import { GoogleAnalytics } from "@next/third-parties/google"
+
 
 async function getGlobalData() {
   try {
@@ -45,6 +47,7 @@ export default async function RootLayout({
           </div>
         </Providers>
       </body>
+      <GoogleAnalytics gaId={process.env.GA_MERCHANT_ID || ''} />
     </html>
   )
 }
