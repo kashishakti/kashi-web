@@ -18,7 +18,11 @@ const PradoshDetails = ({ slug, pradoshDetailData }: PradoshDetailsProps) => {
     const festivals = pradoshDetailData?.PradoshBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-festivals')?.festivals?.map((festival: any) => ({ ... festival, type: 'Festival', id: `festival-${festival.id}`}));
     const pujaVidhis = pradoshDetailData?.PradoshBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-puja-vidhi')?.puja_vidhis?.map((puja: any) => ({ ... puja, type: 'Puja Vidhi', id: `puja-${puja.id}`}));
     const vratKathas = pradoshDetailData?.PradoshBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-vrat-katha')?.vrat_kathas?.map((katha: any) => ({ ... katha, type: 'Vrat Katha', id: `katha-${katha.id}`}));
-    return [...(temples || []), ...(festivals || []), ...(pujaVidhis || []), ...(vratKathas || [])];
+    const purnimas = pradoshDetailData?.PradoshBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-purnima')?.purnimas?.map((purnima: any) => ({ ... purnima, type: 'Purnima', id: `purnima-${purnima.id}`}));
+    const pradosh = pradoshDetailData?.PradoshBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-pradosh')?.pradoshes?.map((pradosh: any) => ({ ... pradosh, type: 'Pradosh', id: `pradosh-${pradosh.id}`}));
+    const ekadashis = pradoshDetailData?.PradoshBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-ekadashi')?.ekadashis?.map((ekadashi: any) => ({ ... ekadashi, type: 'Ekadashi', id: `ekadashi-${ekadashi.id}`}));
+    const amavasyas = pradoshDetailData?.PradoshBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-amavasya')?.amavasyas?.map((amavasya: any) => ({ ... amavasya, type: 'Amavasya', id: `amavasya-${amavasya.id}`}));
+    return [...(temples || []), ...(festivals || []), ...(pujaVidhis || []), ...(vratKathas || []), ...(purnimas || []), ...(pradosh || []), ...(ekadashis || []), ...(amavasyas || [])];
   }, [pradoshDetailData])
   
 
@@ -253,7 +257,7 @@ const PradoshDetails = ({ slug, pradoshDetailData }: PradoshDetailsProps) => {
       </div>
 
       {/* Recommended Articles Section */}
-      <section className="eka-related-section">
+      {recommendedData?.length > 0 && (<section className="eka-related-section">
         <div className="eka-related-inner">
           <div className="eka-related-head">
             <div>
@@ -277,10 +281,10 @@ const PradoshDetails = ({ slug, pradoshDetailData }: PradoshDetailsProps) => {
             ))}
           </div>
         </div>
-      </section>
+      </section>)}
 
       {/* Next Ekadashi CTA Section */}
-      <div className="eka-next">
+      {pradoshDetailData?.NextPradoshLink?.pradoshes?.[0]?.Title && (<div className="eka-next">
         <div className="eka-next-inner">
           <div>
             <div className="eka-next-eyebrow">{`Up Next · ${pradoshDetailData?.NextPradoshLink?.pradoshes?.[0]?.HinduMonth?.Month || ''} · ${pradoshDetailData?.NextPradoshLink?.pradoshes?.[0]?.TrayodashiPaksha || ''}`}</div>
@@ -295,7 +299,7 @@ const PradoshDetails = ({ slug, pradoshDetailData }: PradoshDetailsProps) => {
             {`View ${pradoshDetailData?.NextPradoshLink?.pradoshes?.[0]?.Title} →`}
           </button>
         </div>
-      </div>
+      </div>)}
 
       {/* Page Divider */}
       <div className="page-divider">
@@ -330,6 +334,14 @@ const getLink = (type: string, slug: string) => {
         return `/festival/${slug}`;
       case 'Puja Vidhi':
         return `/puja-vidhi/${slug}`;
+      case 'Purnima':
+        return `/purnima/${slug}`;
+      case 'Pradosh':
+        return `/pradosh/${slug}`;
+      case 'Ekadashi':
+        return `/ekadashi/${slug}`;
+      case 'Amavasya':
+        return `/amavasya/${slug}`;
     default:
       return '/';
   }

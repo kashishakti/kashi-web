@@ -10,13 +10,18 @@ interface VratKathaDetailsProps {
 
 const VratKathaDetails = ({ slug, vratKathaDetailData }: VratKathaDetailsProps) => {
   const [activeTab, setActiveTab] = useState<string>('eka-significance');
+  const router = useRouter();
 
   const recommendedData = useMemo(() => {
     const temples = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-temples')?.temples?.map((temple: any) => ({ ... temple, type: 'Temple', id: `temple-${temple.id}`}));
     const festivals = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-festivals')?.festivals?.map((festival: any) => ({ ... festival, type: 'Festival', id: `festival-${festival.id}`}));
     const pujaVidhis = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-puja-vidhi')?.puja_vidhis?.map((puja: any) => ({ ... puja, type: 'Puja Vidhi', id: `puja-${puja.id}`}));
     const vratKathas = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-vrat-katha')?.vrat_kathas?.map((katha: any) => ({ ... katha, type: 'Vrat Katha', id: `katha-${katha.id}`}));
-    return [...(temples || []), ...(festivals || []), ...(pujaVidhis || []), ...(vratKathas || [])];
+    const purnimas = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-purnima')?.purnimas?.map((purnima: any) => ({ ... purnima, type: 'Purnima', id: `purnima-${purnima.id}`}));
+    const pradosh = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-pradosh')?.pradoshes?.map((pradosh: any) => ({ ... pradosh, type: 'Pradosh', id: `pradosh-${pradosh.id}`}));
+    const ekadashis = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-ekadashi')?.ekadashis?.map((ekadashi: any) => ({ ... ekadashi, type: 'Ekadashi', id: `ekadashi-${ekadashi.id}`}));
+    const amavasyas = vratKathaDetailData?.VratKathaBlock?.find((item: { __component: string }) => item?.__component === 'shared.related-amavasya')?.amavasyas?.map((amavasya: any) => ({ ... amavasya, type: 'Amavasya', id: `amavasya-${amavasya.id}`}));
+    return [...(temples || []), ...(festivals || []), ...(pujaVidhis || []), ...(vratKathas || []), ...(purnimas || []), ...(pradosh || []), ...(ekadashis || []), ...(amavasyas || [])];
   }, [vratKathaDetailData])
   
 
@@ -138,11 +143,6 @@ const VratKathaDetails = ({ slug, vratKathaDetailData }: VratKathaDetailsProps) 
             }
           })}
 
-
-
-
-
-
           {vratKathaDetailData?.Notes?.trim()?.length > 0 && (
             <div className="eka-callout">
               <div className="eka-callout-title">Important Notes</div>
@@ -200,7 +200,7 @@ const VratKathaDetails = ({ slug, vratKathaDetailData }: VratKathaDetailsProps) 
       </div>
 
       {/* Recommended Articles Section */}
-      <section className="eka-related-section">
+      {recommendedData?.length > 0 && (<section className="eka-related-section">
         <div className="eka-related-inner">
           <div className="eka-related-head">
             <div>
@@ -218,11 +218,13 @@ const VratKathaDetails = ({ slug, vratKathaDetailData }: VratKathaDetailsProps) 
                 title={item?.Title}
                 excerpt={item?.ShortDescription}
                 bgImg={item?.FeaturedImage?.url || null}
+                slug={item?.Slug}
+                router={router}
               />
             ))}
           </div>
         </div>
-      </section>
+      </section>)}
 
       {/* Page Divider */}
       <div className="page-divider">
@@ -243,11 +245,35 @@ interface ArticleCardProps {
   title: string;
   excerpt: string;
   bgImg: string;
+  slug: string;
+  router: any;
+}
+const getLink = (type: string, slug: string) => {
+  switch (type) {
+    case 'Vrat Katha':
+      return `/vrat-katha/${slug}`;
+      case 'Temple':
+        return `/temple/${slug}`;
+      case 'Festival':
+        return `/festival/${slug}`;
+      case 'Puja Vidhi':
+        return `/puja-vidhi/${slug}`;
+      case 'Purnima':
+        return `/purnima/${slug}`;
+      case 'Pradosh':
+        return `/pradosh/${slug}`;
+      case 'Ekadashi':
+        return `/ekadashi/${slug}`;
+      case 'Amavasya':
+        return `/amavasya/${slug}`;
+    default:
+      return '/';
+  }
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ tag, title, excerpt, bgImg }) => {
+const ArticleCard: React.FC<ArticleCardProps> = ({ tag, title, excerpt, bgImg, slug, router }) => {
   return (
-    <a href="#" className="article-card" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+    <a onClick={() => router.push(getLink(tag, slug))} className="article-card" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
       <div className="article-card-img">
         <img className="recom-card-img" src={bgImg} alt={title} />
       </div>
