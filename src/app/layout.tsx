@@ -13,7 +13,7 @@ import { GoogleAnalytics } from "@next/third-parties/google"
 async function getGlobalData() {
   try {
     const response = await fetch(`${BASE_URL}/global-full`, {
-      cache: "no-store",
+      next: { revalidate: 600 },
     })
 
     if (!response.ok) return null

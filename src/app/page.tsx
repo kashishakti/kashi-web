@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 async function getHomeData() {
   const response = await fetch(`${BASE_URL}/landing-page-full`, {
-    cache: "no-store",
+    next: { revalidate: 600 },
   })
 
   if (!response.ok) {
@@ -22,7 +22,7 @@ async function getHomeData() {
 
 async function getNearestData() {
   const response = await fetch(`${BASE_URL}/upcoming-events`, {
-    cache: "no-store",
+    next: { revalidate: 600 },
   })
 
   if (!response.ok) {

@@ -1,20 +1,37 @@
 'use client'
 import Link from "next/link"
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import './Navbar.css'
 
+const isHomeNavigationBlocked = (href?: string, pathname?: string) => {
+  if (typeof href !== 'string' || typeof pathname !== 'string') return false
+
+  const normalizedHref = href.trim()
+  const normalizedPathname = pathname.trim()
+
+  return normalizedPathname === '/' && (normalizedHref === '/' || normalizedHref === '')
+}
+
 const Navbar = ({ headerData }: { headerData: any }) => {
+  const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen(!menuOpen)
+  const logoHref = headerData?.Logo?.href || '/'
+  const shouldBlockLogoNavigation = isHomeNavigationBlocked(logoHref, pathname)
 
   return (
     <>
       <nav className="nav">
-        <Link href={headerData?.Logo?.href || '/'} className="nav-logo">
-          {/* <div className="nav-logo-mark">ॐ</div>
-          <div>Kashi <span style={{ fontWeight: 400 }}>Shakti</span></div> */}
-          <img src={headerData?.Logo?.image?.url || null} alt="Kashi Shakti" className='nav-logo-image' />
-        </Link>
+        {shouldBlockLogoNavigation ? (
+          <div className="nav-logo" aria-disabled="true">
+            <img src={headerData?.Logo?.image?.url || null} alt="Kashi Shakti" className='nav-logo-image' />
+          </div>
+        ) : (
+          <Link href={logoHref} className="nav-logo">
+            <img src={headerData?.Logo?.image?.url || null} alt="Kashi Shakti" className='nav-logo-image' />
+          </Link>
+        )}
         
         <div className="nav-menu">
           {headerData?.menu?.NavLink?.length ? headerData?.menu?.NavLink?.map((item: { href: string; label: string; id: number }) => (

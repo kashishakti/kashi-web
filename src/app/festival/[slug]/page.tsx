@@ -4,6 +4,8 @@ import FestivalDetails from "../../../features/FestivalDetails"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
+export const revalidate = 600
+
 type Props = {
   params: Promise<{ slug: string }>
 }
@@ -11,7 +13,7 @@ type Props = {
 const getFestivalData = cache(async (slug: string) => {
   try {
     const res = await fetch(`${BASE_URL}/festivals/slug/${slug}`, {
-      cache: "no-store"
+      next: { revalidate: 600 }
     });
 
     if (!res.ok) {
