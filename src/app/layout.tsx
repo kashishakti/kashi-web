@@ -47,7 +47,7 @@ export default async function RootLayout({
           </div>
         </Providers>
       </body>
-      <GoogleAnalytics gaId={process.env.GA_MERCHANT_ID || ''} />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
     </html>
   )
 }

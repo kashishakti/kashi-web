@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 }
 
 async function getHomeData() {
+  console.log('1');
   const response = await fetch(`${BASE_URL}/landing-page-full`, {
     next: { revalidate: 600 },
   })
