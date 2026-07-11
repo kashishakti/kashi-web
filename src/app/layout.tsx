@@ -1,3 +1,4 @@
+import { Playfair_Display, DM_Sans } from 'next/font/google'
 import Providers from "./providers"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
@@ -6,14 +7,28 @@ import "../index.css"
 import ScrollToTop from "../components/ScrollToTop"
 import ToastProvider from "../components/ToastProvider"
 import GlobalLoader from "../components/GlobalLoader"
-import { BASE_URL } from "@/constants"
+import { BASE_URL, REVALIDATE } from "@/constants"
 import { GoogleAnalytics } from "@next/third-parties/google"
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
 
 async function getGlobalData() {
   try {
     const response = await fetch(`${BASE_URL}/global-full`, {
-      next: { revalidate: 600 },
+      next: { revalidate: REVALIDATE },
     })
 
     if (!response.ok) return null
@@ -33,7 +48,7 @@ export default async function RootLayout({
   const footerData = globalData?.Footer ?? null
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body>
         <Providers>
           <ToastProvider />

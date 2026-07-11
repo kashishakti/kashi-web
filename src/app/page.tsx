@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Home from "../features/Home"
-import { BASE_URL } from "@/constants"
+import { BASE_URL, REVALIDATE } from "@/constants"
 
 export const metadata: Metadata = {
   title: "Kashi Shakti | Hindu Spiritual Knowledge, Sacred Products & Consulting",
@@ -9,9 +9,8 @@ export const metadata: Metadata = {
 }
 
 async function getHomeData() {
-  console.log('11');
   const response = await fetch(`${BASE_URL}/landing-page-full`, {
-    next: { revalidate: 600 },
+    next: { revalidate: REVALIDATE },
   })
 
   if (!response.ok) {
@@ -23,7 +22,7 @@ async function getHomeData() {
 
 async function getNearestData() {
   const response = await fetch(`${BASE_URL}/upcoming-events`, {
-    next: { revalidate: 600 },
+    next: { revalidate: REVALIDATE },
   })
 
   if (!response.ok) {
