@@ -107,7 +107,6 @@ const FeaturedSection = ({ featured, editorsPicks }: Props) => {
 
               <h2
                 style={{
-                  fontFamily: "var(--font-playfair), serif",
                   fontSize: "clamp(24px, 2.8vw, 34px)",
                   fontWeight: 700,
                   color: "#FAF7F2",
@@ -145,7 +144,6 @@ const FeaturedSection = ({ featured, editorsPicks }: Props) => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontFamily: "var(--font-playfair), serif",
                     fontWeight: 700,
                     color: "#FAF7F2",
                     fontSize: 14,
@@ -292,7 +290,6 @@ const FeaturedSection = ({ featured, editorsPicks }: Props) => {
                 )}
                 <h3
                   style={{
-                    fontFamily: "var(--font-playfair), serif",
                     fontSize: "15.5px",
                     fontWeight: 600,
                     color: "#1C0F08",

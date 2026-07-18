@@ -26,7 +26,6 @@ const PopularThisWeek = ({ blogs }: Props) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <h2
             style={{
-              fontFamily: "var(--font-playfair), serif",
               fontSize: 22,
               fontWeight: 700,
               color: '#1C0F08',
@@ -121,8 +120,7 @@ const PopularThisWeek = ({ blogs }: Props) => {
               <div style={{ padding: '16px 18px' }}>
                 <h3
                   style={{
-                    fontFamily: "var(--font-playfair), serif",
-                    fontSize: 15,
+                          fontSize: 15,
                     fontWeight: 600,
                     color: '#1C0F08',
                     lineHeight: 1.35,

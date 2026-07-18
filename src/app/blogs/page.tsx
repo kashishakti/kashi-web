@@ -66,7 +66,7 @@ export default async function BlogsPage({ searchParams }: PageProps) {
     const initialBlogs = activeCategory.blogs ?? []
 
     return (
-      <div style={{ background: '#FAF7F2', minHeight: '100vh' }}>
+      <div style={{ background: '#FAF7F2', minHeight: '100vh', fontFamily: "var(--font-playfair), serif" }}>
         <BlogHero />
         <CategoryFilters categories={categories} activeSlug={categorySlug} />
         <CategoryArticles initialBlogs={initialBlogs} />
@@ -86,7 +86,7 @@ export default async function BlogsPage({ searchParams }: PageProps) {
   const popularBlogs = pageData?.PopularThisWeek?.blogs ?? []
 
   return (
-    <div style={{ background: '#FAF7F2', minHeight: '100vh' }}>
+    <div style={{ background: '#FAF7F2', minHeight: '100vh', fontFamily: "var(--font-playfair), serif" }}>
       <BlogHero />
       <CategoryFilters categories={categories} />
       <FeaturedSection featured={featured} editorsPicks={editorsPicks} />

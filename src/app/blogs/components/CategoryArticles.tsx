@@ -98,7 +98,6 @@ const CategoryArticles = ({ initialBlogs }: Props) => {
               <div style={{ padding: 20 }}>
                 <h3
                   style={{
-                    fontFamily: "var(--font-playfair), serif",
                     fontSize: 17,
                     fontWeight: 600,
                     color: "#1C0F08",
@@ -138,8 +137,7 @@ const CategoryArticles = ({ initialBlogs }: Props) => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontFamily: "var(--font-playfair), serif",
-                        fontSize: 11,
+                            fontSize: 11,
                         fontWeight: 700,
                         color: "#fff",
                       }}
