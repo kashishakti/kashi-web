@@ -39,6 +39,7 @@ export default function AskPanditModal({ initialQuestion = '', onClose }: Props)
   const [form, setForm] = useState<FormState>({ question: initialQuestion, name: '', phone: '' })
   const [errors, setErrors] = useState<Errors>({})
   const [submitting, setSubmitting] = useState(false)
+  const [refId, setRefId] = useState('')
   const overlayRef = useRef<HTMLDivElement>(null)
 
   // Trap focus and close on Escape
@@ -80,7 +81,7 @@ export default function AskPanditModal({ initialQuestion = '', onClose }: Props)
   async function handleSend() {
     setSubmitting(true)
     try {
-      await fetch(`${BASE_URL}/pandit-orders`, {
+      const res = await fetch(`${BASE_URL}/pandit-orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -92,8 +93,11 @@ export default function AskPanditModal({ initialQuestion = '', onClose }: Props)
           },
         }),
       })
+      const json = await res.json()
+      const documentId: string = json?.data?.documentId ?? ''
+      setRefId(documentId.slice(0, 8).toUpperCase())
       setStep('done')
-    } catch (err) {
+    } catch {
       setStep('done')
     } finally {
       setSubmitting(false)
@@ -252,7 +256,7 @@ export default function AskPanditModal({ initialQuestion = '', onClose }: Props)
             <p className="ask-pandit__confirm-subtitle">
               A verified Pandit will respond on WhatsApp within 2 hours.
             </p>
-            <div className="ask-pandit__confirm-ref">Reference #GD-48213</div>
+            {refId && <div className="ask-pandit__confirm-ref">Reference #{refId}</div>}
             <blockquote className="ask-pandit__confirm-quote">
               &ldquo;{form.question}&rdquo;
             </blockquote>
