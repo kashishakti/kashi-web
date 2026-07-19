@@ -1,10 +1,8 @@
 import { cache } from "react"
-import { BASE_URL } from "@/constants"
+import { BASE_URL, REVALIDATE } from "@/constants"
 import AmavasyaDetails from "@/features/AmavasyaDetails";
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-
-export const revalidate = 600
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -13,7 +11,7 @@ type Props = {
 const getAmavasyaData = cache(async (slug: string) => {
   try {
     const res = await fetch(`${BASE_URL}/amavasyas/slug/${slug}`, {
-      next: { revalidate: 600 }
+      next: { revalidate: REVALIDATE }
     });
 
     if (!res.ok) {

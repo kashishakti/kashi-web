@@ -1,0 +1,534 @@
+/* ── Mantra Card Modal ───────────────────────────── */
+.mc-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 20, 10, 0.55);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.mc-modal {
+  width: 460px;
+  max-width: 100%;
+  background: rgb(249, 245, 234);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(30, 20, 10, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ── Topbar ─────────────────────────────────────── */
+.mc-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 28px 14px;
+}
+
+.mc-title {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  flex: 1;
+  text-align: left;
+}
+
+.mc-back,
+.mc-close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-mid);
+  border-radius: 4px;
+  padding: 0;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.mc-back:hover,
+.mc-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.mc-close {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ── Progress ───────────────────────────────────── */
+.mc-step-label {
+  padding: 0 28px 8px;
+  font-size: 11px;
+  color: #9A7040;
+  text-align: left;
+}
+
+.mc-progress-track {
+  height: 3px;
+  background: #E4D0A8;
+  margin: 0 28px;
+  border-radius: 2px;
+}
+
+.mc-progress-bar {
+  height: 3px;
+  background: #4A7C59;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.mc-progress-divider {
+  border: none;
+  border-bottom: 1px solid #E4D0A8;
+  margin: 10px 0 0;
+}
+
+/* ── Body ───────────────────────────────────────── */
+.mc-body {
+  padding: 16px 28px 28px;
+}
+
+/* ── Description card ───────────────────────────── */
+.mc-desc-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mc-desc-icon {
+  width: 32px;
+  height: 32px;
+  background: #deeae2;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  color: #4A7C59;
+}
+
+.mc-desc-text {
+  font-size: 13px;
+  color: #4A7C59;
+  line-height: 1.55;
+  padding-top: 4px;
+}
+
+/* ── Field ──────────────────────────────────────── */
+.mc-field {
+  margin-bottom: 14px;
+}
+
+.mc-field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mid);
+  margin-bottom: 8px;
+}
+
+.mc-loading {
+  font-size: 13px;
+  color: var(--ink-mid);
+  padding: 8px 0;
+}
+
+.mc-error {
+  font-size: 11px;
+  color: #B32021;
+  margin-top: 5px;
+}
+
+.mc-error--center {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.mc-field--error .mc-input,
+.mc-field--error .mc-phone-wrap {
+  border-color: #B32021;
+}
+
+/* ── Intention grid ─────────────────────────────── */
+.mc-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mc-option-card {
+  background: #ffffff;
+  border: 1.5px solid #D8C8B0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.mc-option-card:hover {
+  border-color: #4A7C59;
+  background: #F2F8F4;
+}
+
+.mc-option-card--active {
+  border-color: #4A7C59;
+  background: #EAF3ED;
+}
+
+.mc-option-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+/* ── Deity chips ────────────────────────────────── */
+.mc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.mc-chip {
+  height: 32px;
+  padding: 0 15px;
+  background: #ffffff;
+  border: 1.5px solid #D8C8B0;
+  border-radius: 16px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.mc-chip:hover,
+.mc-chip--active {
+  background: #4A7C59;
+  border-color: #4A7C59;
+  color: #ffffff;
+}
+
+/* ── Inputs ─────────────────────────────────────── */
+.mc-input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mc-input-row .mc-field {
+  margin-bottom: 0;
+}
+
+.mc-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  background: #ffffff;
+  border: 1px solid #D8C8B0;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--ink);
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.mc-input:focus {
+  outline: none;
+  border-color: #4A7C59;
+}
+
+.mc-optional {
+  font-weight: 400;
+  color: #B09070;
+  font-size: 11px;
+}
+
+/* ── Phone ──────────────────────────────────────── */
+.mc-phone-wrap {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #D8C8B0;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 42px;
+  transition: border-color 0.15s;
+}
+
+.mc-phone-wrap:focus-within {
+  border-color: #4A7C59;
+}
+
+.mc-phone-wrap--error {
+  border-color: #B32021;
+}
+
+.mc-phone-prefix {
+  padding: 0 10px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  border-right: 1px solid #D8C8B0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  background: #F0EBE0;
+  font-family: inherit;
+}
+
+.mc-phone-input {
+  flex: 1;
+  height: 100%;
+  padding: 0 10px;
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  color: var(--ink);
+  font-family: inherit;
+  min-width: 0;
+}
+
+.mc-phone-input:focus {
+  outline: none;
+}
+
+/* ── CTA ────────────────────────────────────────── */
+.mc-cta {
+  width: 100%;
+  height: 44px;
+  background: #4A7C59;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 3px 10px rgba(74, 124, 89, 0.25);
+  transition: filter 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mc-cta:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.mc-cta:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── Privacy / free note ────────────────────────── */
+.mc-privacy-note {
+  font-size: 11.5px;
+  color: #9A7040;
+  text-align: center;
+  margin: 10px 0 14px;
+}
+
+.mc-free-note {
+  font-size: 11.5px;
+  color: #9A7040;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ── Edit link ──────────────────────────────────── */
+.mc-edit-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #4A7C59;
+  cursor: pointer;
+  padding: 8px 0;
+  font-family: inherit;
+  text-decoration: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.mc-edit-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Mantra Card Preview ────────────────────────── */
+.mc-card-preview {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(30, 20, 10, 0.1);
+}
+
+.mc-card-header {
+  background: #4A7C59;
+  padding: 24px 22px 20px;
+  text-align: center;
+}
+
+.mc-card-om {
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.mc-card-header-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.mc-card-tags {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.mc-card-tag {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-family: inherit;
+}
+
+.mc-card-prepared {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: inherit;
+}
+
+.mc-card-body {
+  background: #F5F9F6;
+  padding: 18px 20px;
+}
+
+.mc-card-section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #4A7C59;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-family: inherit;
+}
+
+.mc-card-mantra-text {
+  font-size: 17px;
+  color: #1C0F08;
+  line-height: 1.6;
+  text-align: center;
+  padding: 4px 0 8px;
+  font-family: inherit;
+  white-space: pre-wrap;
+}
+
+.mc-card-mantra-text--fallback {
+  color: #6B5A50;
+  font-style: italic;
+}
+
+.mc-card-divider {
+  height: 1px;
+  background: #D8E8DC;
+  margin: 10px 0;
+}
+
+.mc-card-detail-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #4A7C59;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-family: inherit;
+}
+
+.mc-card-detail-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C0F08;
+  font-family: inherit;
+}
+
+/* ── Download button (outlined) ─────────────────── */
+.mc-download-btn {
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  border: 1.5px solid #4A7C59;
+  color: #4A7C59;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mc-download-btn:hover:not(:disabled) {
+  background: #EAF3ED;
+}
+
+.mc-download-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── Mobile ─────────────────────────────────────── */
+@media (max-width: 520px) {
+  .mc-overlay {
+    align-items: center;
+    padding: 16px;
+  }
+
+  .mc-modal {
+    width: 100%;
+    border-radius: 12px;
+    max-height: 90vh;
+  }
+
+  .mc-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .mc-input-row {
+    grid-template-columns: 1fr;
+  }
+}
