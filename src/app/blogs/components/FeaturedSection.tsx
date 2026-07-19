@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getCategoryColors } from "./blogUtils";
 import type { BlogItem } from "../types";
 
@@ -9,7 +10,7 @@ interface Props {
 const FeaturedSection = ({ featured, editorsPicks }: Props) => {
   if (!featured) return null;
 
-  const category = featured.categories?.[0]?.Title;
+  const category = featured.category?.Title;
   const author = featured.Author?.authors?.[0]?.Title ?? "Kashi Shakti";
   const [c1] = getCategoryColors(category);
   const initial = author.charAt(0).toUpperCase();
@@ -193,7 +194,7 @@ const FeaturedSection = ({ featured, editorsPicks }: Props) => {
                 </>
               )}
 
-              <a
+              <Link
                 href={`/blogs/${featured.Slug}`}
                 className="fs-read-btn"
                 style={{
@@ -222,7 +223,7 @@ const FeaturedSection = ({ featured, editorsPicks }: Props) => {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -258,17 +259,20 @@ const FeaturedSection = ({ featured, editorsPicks }: Props) => {
           </div>
 
           {editorsPicks.map((blog, i) => {
-            const cat = blog.categories?.[0]?.Title;
+            const cat = blog.category?.Title;
             const isLast = i === editorsPicks.length - 1;
             return (
-              <div
+              <Link
                 key={blog.documentId}
+                href={`/blogs/${blog.Slug}`}
                 style={{
+                  display: "block",
+                  textDecoration: "none",
+                  color: "inherit",
                   padding: "20px 22px",
                   borderBottom: isLast
                     ? "none"
                     : "1px solid rgba(28,15,8,0.07)",
-                  cursor: "pointer",
                   flex: editorsPicks.length <= 3 ? 1 : undefined,
                 }}
               >
@@ -324,7 +328,7 @@ const FeaturedSection = ({ featured, editorsPicks }: Props) => {
                     </>
                   )}
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

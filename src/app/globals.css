@@ -43,7 +43,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body { height: 100%; scroll-behavior: smooth; }
+html, body { height: 100%; scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: 'Inter', -apple-system, system-ui, sans-serif !important;
@@ -54,6 +54,7 @@ body {
   font-size: 14px;
   line-height: 1.5;
   transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
 }
 
 /* 2. Typography System */

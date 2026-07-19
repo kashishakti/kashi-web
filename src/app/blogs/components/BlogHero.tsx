@@ -18,7 +18,7 @@ const BlogHero = () => {
         }
       `}</style>
       {/* Background decorations */}
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
         <div
           style={{
             position: "absolute",

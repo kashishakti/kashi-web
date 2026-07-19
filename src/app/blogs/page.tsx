@@ -21,12 +21,25 @@ async function getBlogPageData(): Promise<BlogPageData | null> {
   }
 }
 
-// Categories include their related blogs (used on the category filter view).
 async function getCategories(): Promise<Category[]> {
   try {
     const res = await fetch(`${BASE_URL}/categories`, {
       next: { revalidate: REVALIDATE },
     })
+    if (!res.ok) return []
+    const json = await res.json()
+    return json ?? []
+  } catch {
+    return []
+  }
+}
+
+async function getBlogsByCategory(categorySlug: string): Promise<BlogItem[]> {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/blogs?category=${encodeURIComponent(categorySlug)}`,
+      { next: { revalidate: REVALIDATE } }
+    )
     if (!res.ok) return []
     const json = await res.json()
     return json ?? []
@@ -58,12 +71,12 @@ export default async function BlogsPage({ searchParams }: PageProps) {
   const { category: categorySlug } = await searchParams
   const categories = await getCategories()
 
-  // Category view: show hero + chips + filtered articles (blogs come from the category relation).
+  // Category view: show hero + chips + filtered articles.
   if (categorySlug) {
     const activeCategory = categories.find((c) => c.Slug === categorySlug)
     if (!activeCategory) redirect('/blogs')
 
-    const initialBlogs = activeCategory.blogs ?? []
+    const initialBlogs = await getBlogsByCategory(categorySlug)
 
     return (
       <div style={{ background: '#FAF7F2', minHeight: '100vh', fontFamily: "var(--font-playfair), serif" }}>

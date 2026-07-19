@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getCategoryColors } from './blogUtils'
 import type { BlogItem } from '../types'
 
@@ -65,12 +66,12 @@ const PopularThisWeek = ({ blogs }: Props) => {
         }}
       >
         {blogs.map((blog) => {
-          const category = blog.categories?.[0]?.Title
+          const category = blog.category?.Title
           const author = blog.Author?.authors?.[0]?.Title ?? 'Kashi Shakti'
           const [c1, c2] = getCategoryColors(category)
 
           return (
-            <a
+            <Link
               key={blog.documentId}
               href={`/blogs/${blog.Slug}`}
               style={{ textDecoration: 'none', color: 'inherit', display: 'block', flex: 'none' }}
@@ -102,7 +103,7 @@ const PopularThisWeek = ({ blogs }: Props) => {
                       position: 'absolute',
                       top: 12,
                       left: 12,
-                      background: 'rgba(250,247,242,0.15)',
+                      background: 'rgba(20,10,4,0.55)',
                       color: '#FAF7F2',
                       padding: '3px 10px',
                       borderRadius: 100,
@@ -159,7 +160,7 @@ const PopularThisWeek = ({ blogs }: Props) => {
                 </div>
               </div>
             </div>
-            </a>
+            </Link>
           )
         })}
       </div>

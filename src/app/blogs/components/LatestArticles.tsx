@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { getCategoryColors } from "./blogUtils";
 import type { BlogItem } from "../types";
 
@@ -82,7 +83,7 @@ const LatestArticles = ({ initialBlogs }: Props) => {
         }}
       >
         {blogs.map((blog) => {
-          const category = blog.categories?.[0]?.Title;
+          const category = blog.category?.Title;
           const author = blog.Author?.authors?.[0]?.Title ?? "Kashi Shakti";
           const authorInitial = author.charAt(0).toUpperCase();
           const [c1, c2] = getCategoryColors(category);
@@ -94,7 +95,7 @@ const LatestArticles = ({ initialBlogs }: Props) => {
             : "";
 
           return (
-            <a
+            <Link
               key={blog.documentId}
               href={`/blogs/${blog.Slug}`}
               style={{
@@ -138,9 +139,9 @@ const LatestArticles = ({ initialBlogs }: Props) => {
                         position: "absolute",
                         top: 14,
                         left: 14,
-                        background: "rgba(250,247,242,0.15)",
+                        background: "rgba(20,10,4,0.55)",
                         backdropFilter: "blur(4px)",
-                        border: "1px solid rgba(250,247,242,0.2)",
+                        border: "1px solid rgba(250,247,242,0.15)",
                         color: "#FAF7F2",
                         padding: "4px 10px",
                         borderRadius: 100,
@@ -228,7 +229,7 @@ const LatestArticles = ({ initialBlogs }: Props) => {
                   </div>
                 </div>
               </article>
-            </a>
+            </Link>
           );
         })}
       </div>

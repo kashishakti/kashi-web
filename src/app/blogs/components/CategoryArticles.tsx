@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import { getCategoryColors } from "./blogUtils";
 import type { BlogItem } from "../types";
 
@@ -9,6 +10,16 @@ interface Props {
 
 const CategoryArticles = ({ initialBlogs }: Props) => {
 
+
+  if (initialBlogs.length === 0) {
+    return (
+      <div style={{ maxWidth: 1280, margin: "52px auto 0", padding: "0 40px", textAlign: "center" }}>
+        <p style={{ fontSize: 16, color: "#9C8B7E", padding: "60px 0" }}>
+          No articles found in this category yet. Check back soon!
+        </p>
+      </div>
+    )
+  }
 
   return (
     <div className="ca-outer" style={{ maxWidth: 1280, margin: "52px auto 0", padding: "0 40px" }}>
@@ -26,7 +37,7 @@ const CategoryArticles = ({ initialBlogs }: Props) => {
         }}
       >
         {initialBlogs.map((blog) => {
-          const category = blog.categories?.[0]?.Title;
+          const category = blog.category?.Title;
           const author = blog.Author?.authors?.[0]?.Title ?? "Kashi Shakti";
           const authorInitial = author.charAt(0).toUpperCase();
           const [c1, c2] = getCategoryColors(category);
@@ -38,7 +49,7 @@ const CategoryArticles = ({ initialBlogs }: Props) => {
             : "";
 
           return (
-            <a
+            <Link
               key={blog.documentId}
               href={`/blogs/${blog.Slug}`}
               style={{ textDecoration: "none", color: "inherit", display: "block" }}
@@ -77,9 +88,9 @@ const CategoryArticles = ({ initialBlogs }: Props) => {
                       position: "absolute",
                       top: 14,
                       left: 14,
-                      background: "rgba(250,247,242,0.15)",
+                      background: "rgba(20,10,4,0.55)",
                       backdropFilter: "blur(4px)",
-                      border: "1px solid rgba(250,247,242,0.2)",
+                      border: "1px solid rgba(250,247,242,0.15)",
                       color: "#FAF7F2",
                       padding: "4px 10px",
                       borderRadius: 100,
@@ -166,7 +177,7 @@ const CategoryArticles = ({ initialBlogs }: Props) => {
                 </div>
               </div>
             </article>
-            </a>
+            </Link>
           );
         })}
       </div>

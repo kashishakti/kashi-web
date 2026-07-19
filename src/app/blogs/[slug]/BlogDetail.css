@@ -201,6 +201,7 @@
 }
 
 .blog-rich-text strong { color: var(--ink); }
+.blog-rich-text u { text-decoration-color: var(--accent); text-underline-offset: 3px; }
 
 /* ── Mantra card widget ─────────────────────────── */
 .mantra-card-widget {
@@ -536,6 +537,32 @@
   margin-top: 7px;
   font-size: 10px;
   color: #9A7040;
+}
+
+/* ── Inline image block ─────────────────────────── */
+.blog-inline-image {
+  margin: 24px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.blog-inline-image img {
+  width: 50%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .blog-inline-image img {
+    width: 75%;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-inline-image img {
+    width: 100%;
+  }
 }
 
 /* ── Mobile stacked layout ──────────────────────── */
