@@ -47,6 +47,7 @@ type KathaItem = {
 type VratFestivalsPageProps = {
   year?: number
   serverNow?: number
+  initialTab?: Exclude<VratType, 'all'>
   ekadashisData?: unknown
   purnimasData?: unknown
   amavasyasData?: unknown
@@ -318,13 +319,14 @@ const VratCard = ({ item, meta, today }: { item: VratItem; meta: VratMeta; today
 const VratFestivalsPage = ({
   year = new Date().getFullYear(),
   serverNow,
+  initialTab,
   ekadashisData,
   purnimasData,
   amavasyasData,
   pradoshesData,
   vratKathasData,
 }: VratFestivalsPageProps) => {
-  const [activeTab, setActiveTab] = useState<VratType>('all')
+  const [activeTab, setActiveTab] = useState<VratType>(initialTab ?? 'all')
   const [search, setSearch] = useState('')
   const today = useMemo(() => getToday(serverNow), [serverNow])
   const isToday = (date: string) => parseDate(date).getTime() === today.getTime()

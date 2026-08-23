@@ -31,8 +31,14 @@ export function generateMetadata() {
   }
 }
 
-export default async function Page() {
+const VALID_TABS = ['ekadashi', 'pradosh', 'purnima', 'amavasya', 'vratkatha'] as const
+
+export default async function Page({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
   const year = new Date().getFullYear()
+  const params = await searchParams
+  const tabParam = params?.tab
+  const initialTab = VALID_TABS.includes(tabParam as any) ? (tabParam as typeof VALID_TABS[number]) : undefined
+
   const [ekadashisData, purnimasData, amavasyasData, pradoshesData, vratKathasData] = await Promise.all([
     getVratData("ekadashis", year),
     getVratData("purnimas", year),
@@ -49,6 +55,7 @@ export default async function Page() {
     <VratFestivalsPage
       year={year}
       serverNow={Date.now()}
+      initialTab={initialTab}
       ekadashisData={ekadashisData}
       purnimasData={purnimasData}
       amavasyasData={amavasyasData}

@@ -131,6 +131,7 @@ export interface BlogPageData {
   FeaturedBlog: { blogs: BlogItem[] }
   EditorsPicks: { blogs: BlogItem[] }
   PopularThisWeek: { blogs: BlogItem[] }
+  SEO: SEO | null
 }
 
 export interface BlogListResponse {

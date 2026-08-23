@@ -80,7 +80,7 @@ const FeaturedSection = ({ featured, editorsPicks }: Props) => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              minHeight: 400,
+              minHeight: "100%",
             }}
           >
             <div>
