@@ -74,12 +74,15 @@ const PopularThisWeek = ({ blogs }: Props) => {
             <Link
               key={blog.documentId}
               href={`/blogs/${blog.Slug}`}
-              style={{ textDecoration: 'none', color: 'inherit', display: 'block', flex: 'none' }}
+              style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flex: 'none', width: 275 }}
             >
             <div
               className="ptw-card"
               style={{
-                width: 275,
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
                 background: '#fff',
                 borderRadius: 14,
                 overflow: 'hidden',
@@ -118,7 +121,7 @@ const PopularThisWeek = ({ blogs }: Props) => {
                   </span>
                 )}
               </div>
-              <div style={{ padding: '16px 18px' }}>
+              <div style={{ padding: '16px 18px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <h3
                   style={{
                           fontSize: 15,

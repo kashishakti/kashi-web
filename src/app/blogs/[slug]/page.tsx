@@ -2,13 +2,15 @@ import type { Metadata } from 'next'
 import { BASE_URL, REVALIDATE } from '@/constants'
 import { formatDate } from '@/common/functions'
 import type { BlogItem, ContentBlock, FAQBlock, RelatedBlock, RelatedItem } from '../types'
-import RichTextRenderer from '../components/RichTextRenderer'
+import RichTextRenderer from '@/components/RichTextRenderer'
 import MantraCardWidget from './MantraCardWidget'
 import ExpertGuidanceSidebar from './ExpertGuidanceSidebar'
 import FAQItem from '@/components/FAQItem'
 import ArticleCard from '@/components/ArticleCard'
 import ContentTable from '@/components/ContentTable'
+import '@/components/PageCard.css'
 import './BlogDetail.css'
+import '@/components/RichText.css'
 import '@/components/FAQ.css'
 import '@/components/Recommended.css'
 import '@/components/ContentTable.css'
@@ -57,9 +59,9 @@ function renderBlock(block: ContentBlock, blogSlug: string) {
   if (block.__component === 'section.mantra-card-widget') {
     return <MantraCardWidget key={block.id} blogSlug={blogSlug} />
   }
-  if (block.__component === 'shared.image') {
+  if (block.__component === 'shared.image' && block.image?.url) {
     return (
-      <div key={block.id} className="blog-inline-image">
+      <div key={block.image.documentId} className="blog-inline-image">
         <img
           src={block.image.url}
           alt={block.image.alternativeText ?? ''}
@@ -124,49 +126,49 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const related = flattenRelated(blog.RelatedReadingBlock ?? [])
 
   return (
-    <div className="blog-detail">
-      <div className="blog-detail__inner">
-        <div className="blog-detail__card">
+    <div className="page-card">
+      <div className="page-card__inner">
+        <div className="page-card__card">
 
           {/* Accent bar */}
-          <div className="blog-detail__accent-bar" aria-hidden="true" />
+          <div className="page-card__accent-bar" aria-hidden="true" />
 
           {/* Header */}
-          <header className="blog-detail__header">
-            <div className="blog-detail__meta">
+          <header className="page-card__header">
+            <div className="blog__meta">
               {primaryCategory && (
-                <span className="blog-detail__category-badge">
+                <span className="blog__category-badge">
                   {primaryCategory.Title.toUpperCase()}
                 </span>
               )}
               {(displayDate || readTime) && (
-                <span className="blog-detail__date-read">
+                <span className="page-card__subtitle">
                   {[displayDate, readTime].filter(Boolean).join(' · ')}
                 </span>
               )}
             </div>
 
-            <h1 className="blog-detail__title">{blog.Title}</h1>
+            <h1 className="page-card__title">{blog.Title}</h1>
 
             {author && (
-              <div className="blog-detail__author">
-                <div className="blog-detail__author-avatar">
+              <div className="blog__author">
+                <div className="blog__author-avatar">
                   {author.FeaturedImage ? (
                     <img src={author.FeaturedImage.url} alt={author.Title} />
                   ) : (
                     authorInitial
                   )}
                 </div>
-                <div className="blog-detail__author-name">{author.Title}</div>
+                <div className="blog__author-name">{author.Title}</div>
               </div>
             )}
           </header>
 
           {/* Body: 8:4 grid */}
-          <div className="blog-detail__body">
+          <div className="blog__body">
 
             {/* Left column: LeftBlock dynamic zone */}
-            <article className="blog-detail__left">
+            <article className="blog__left">
               {blog.LeftBlock && blog.LeftBlock.length > 0
                 ? blog.LeftBlock.map(block => renderBlock(block, slug))
                 : blog.Description && (

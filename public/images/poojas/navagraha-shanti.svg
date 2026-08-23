@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+<rect width="800" height="500" fill="#F5EDD8"/>
+<circle cx="400" cy="215" r="150" fill="#FBF3E4"/>
+<circle cx="400" cy="230" r="140" fill="none" stroke="#E8D5B0" stroke-width="3" stroke-dasharray="2 10"/>
+<circle cx="400" cy="230" r="88" fill="none" stroke="#E8D5B0" stroke-width="2" stroke-dasharray="2 10"/>
+<circle cx="400" cy="230" r="46" fill="#E8A860"/>
+<circle cx="400" cy="230" r="34" fill="#C07840"/>
+<text x="400" y="242" font-size="34" text-anchor="middle" fill="#FBF3E4" font-family="serif">ॐ</text>
+<circle cx="400" cy="90" r="15" fill="#C07840"/>
+<circle cx="499" cy="131" r="18" fill="#4E7A62"/>
+<circle cx="540" cy="230" r="21" fill="#9A6B1E"/>
+<circle cx="499" cy="329" r="15" fill="#7A3C14"/>
+<circle cx="400" cy="370" r="18" fill="#A0C8A8"/>
+<circle cx="301" cy="329" r="21" fill="#9A5A28"/>
+<circle cx="260" cy="230" r="15" fill="#E8A860"/>
+<circle cx="301" cy="131" r="18" fill="#3A5E4A"/>
+<ellipse cx="30" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 30 470)"/>
+<ellipse cx="106" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 106 470)"/>
+<ellipse cx="182" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 182 470)"/>
+<ellipse cx="258" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 258 470)"/>
+<ellipse cx="334" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 334 470)"/>
+<ellipse cx="410" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 410 470)"/>
+<ellipse cx="486" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 486 470)"/>
+<ellipse cx="562" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 562 470)"/>
+<ellipse cx="638" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 638 470)"/>
+<ellipse cx="714" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 714 470)"/>
+<ellipse cx="790" cy="470" rx="9" ry="20" fill="#A0C8A8" opacity="0.5" transform="rotate(18 790 470)"/>
+</svg>

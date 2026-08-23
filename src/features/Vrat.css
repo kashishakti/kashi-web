@@ -1,24 +1,24 @@
 .vrat-page {
-  --bg: #F6EFE3;
-  --bg-alt: #FDF8EE;
-  --surface: #FFFFFF;
-  --ink: #1E1410;
-  --ink-mid: #4A3A2E;
-  --ink-muted: #8B7461;
-  --ink-faint: #B9A996;
-  --border: #E6D6BE;
-  --border-soft: #F0E4CF;
-  --accent: #B23A1A;
-  --accent-soft: #F0D9CC;
-  --maroon: #7A1F1A;
-  --gold: #A07510;
-  --gold-bright: #C89A2B;
+  --bg: #f6efe3;
+  --bg-alt: #fdf8ee;
+  --surface: #ffffff;
+  --ink: #1e1410;
+  --ink-mid: #4a3a2e;
+  --ink-muted: #8b7461;
+  --ink-faint: #b9a996;
+  --border: #e6d6be;
+  --border-soft: #f0e4cf;
+  --accent: #b23a1a;
+  --accent-soft: #f0d9cc;
+  --maroon: #7a1f1a;
+  --gold: #a07510;
+  --gold-bright: #c89a2b;
   --shadow-sm: 0 2px 8px rgba(60, 30, 10, 0.07);
 
   width: 100%;
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   padding-top: 72px;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .hero {
-  background: #1A0E06;
+  background: #1a0e06;
   color: #fff;
   display: grid;
   grid-template-columns: 1fr 420px;
@@ -87,7 +87,7 @@
 
 .hero-bg {
   position: absolute;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 300px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.02);
@@ -125,7 +125,7 @@
 }
 
 .hero-kicker::before {
-  content: '';
+  content: "";
   width: 22px;
   height: 1px;
   background: var(--gold-bright);
@@ -133,7 +133,7 @@
 }
 
 .hero-h1 {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-weight: 300;
   font-style: italic;
   font-size: 80px;
@@ -150,7 +150,7 @@
 }
 
 .hero-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 19px;
   color: rgba(255, 255, 255, 0.35);
   margin-top: 30px;
@@ -186,7 +186,7 @@
 }
 
 .hero-stat-n {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 34px;
   font-weight: 500;
   color: var(--gold-bright);
@@ -254,7 +254,7 @@
 }
 
 .vrow-date {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   color: rgba(255, 255, 255, 0.36);
   white-space: nowrap;
@@ -265,7 +265,7 @@
 }
 
 .vrow-name {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 13px;
   font-weight: 500;
   color: #fff;
@@ -277,14 +277,14 @@
 }
 
 .vrow-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 9px;
   color: rgba(255, 255, 255, 0.24);
   margin-top: 1px;
 }
 
 .vrow-rel {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 8px;
   color: rgba(255, 255, 255, 0.28);
   text-align: right;
@@ -360,7 +360,7 @@
 .tab .n {
   font-size: 10px;
   color: var(--ink-faint);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
 }
 
 .tab.on .n {
@@ -441,7 +441,7 @@
 }
 
 .feat-h {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 50px;
   line-height: 1;
   font-weight: 500;
@@ -455,7 +455,7 @@
 }
 
 .feat-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 20px;
   color: var(--ink-muted);
   margin-bottom: 14px;
@@ -511,7 +511,7 @@
 }
 
 .timing-val {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 500;
   color: var(--ink);
@@ -526,7 +526,7 @@
 .feat-art {
   border-radius: 16px;
   overflow: hidden;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -536,10 +536,14 @@
 }
 
 .feat-art::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 20%, rgba(200, 154, 43, 0.28) 0%, transparent 50%);
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    rgba(200, 154, 43, 0.28) 0%,
+    transparent 50%
+  );
 }
 
 .feat-art-top,
@@ -564,7 +568,7 @@
 }
 
 .feat-art-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 160px;
   line-height: 1;
   text-align: center;
@@ -591,29 +595,29 @@
 
 .feat-art-month {
   color: rgba(255, 255, 255, 0.85);
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-style: italic;
   font-size: 13px;
 }
 
 .g-purnima {
-  background: linear-gradient(140deg, #1E2A08, #3A5A14 60%, #6E8A2E);
+  background: linear-gradient(140deg, #1e2a08, #3a5a14 60%, #6e8a2e);
 }
 
 .g-vishnu {
-  background: linear-gradient(140deg, #1B3A52, #2A4878 60%, #4A6FA8);
+  background: linear-gradient(140deg, #1b3a52, #2a4878 60%, #4a6fa8);
 }
 
 .g-shiva {
-  background: linear-gradient(140deg, #2C2A1F, #4A4128 60%, #7A6A3A);
+  background: linear-gradient(140deg, #2c2a1f, #4a4128 60%, #7a6a3a);
 }
 
 .g-ganesh {
-  background: linear-gradient(140deg, #2D2818, #5A4828 60%, #A07510);
+  background: linear-gradient(140deg, #2d2818, #5a4828 60%, #a07510);
 }
 
 .g-amavasya {
-  background: linear-gradient(140deg, #16131C, #2A2438 60%, #473D5E);
+  background: linear-gradient(140deg, #16131c, #2a2438 60%, #473d5e);
 }
 
 .tl-wrap {
@@ -640,7 +644,7 @@
 }
 
 .tl-h {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 32px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -655,7 +659,7 @@
 }
 
 .tl-total {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   color: var(--ink-muted);
   text-align: right;
@@ -715,7 +719,7 @@
 }
 
 .tl-mcnt {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   color: var(--ink-faint);
 }
@@ -742,7 +746,7 @@
 }
 
 .tlr.tod {
-  background: #FFFBF0;
+  background: #fffbf0;
   border-color: rgba(200, 154, 43, 0.5);
 }
 
@@ -771,7 +775,7 @@
 }
 
 .tlr-d {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 12px;
   font-weight: 500;
   color: var(--ink-mid);
@@ -804,18 +808,18 @@
 }
 
 .b-vishnu {
-  background: #DFE8F0;
-  color: #2A4878;
+  background: #dfe8f0;
+  color: #2a4878;
 }
 
 .b-shiva {
-  background: #E9E0CB;
-  color: #6E5420;
+  background: #e9e0cb;
+  color: #6e5420;
 }
 
 .b-purnima {
-  background: #E6EFD8;
-  color: #436B2A;
+  background: #e6efd8;
+  color: #436b2a;
 }
 
 .tlr-nb {
@@ -826,7 +830,7 @@
 }
 
 .tlr-name {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 15px;
   font-weight: 500;
   color: var(--ink);
@@ -834,7 +838,7 @@
 }
 
 .tlr-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 11px;
   color: var(--ink-muted);
 }
@@ -866,7 +870,7 @@
 }
 
 .tlr-tval {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   color: var(--ink-mid);
 }
@@ -930,14 +934,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 32px;
   color: rgba(255, 255, 255, 0.92);
   flex-shrink: 0;
 }
 
 .th-name {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 38px;
   font-weight: 500;
   letter-spacing: -0.025em;
@@ -951,7 +955,7 @@
 }
 
 .th-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 15px;
   color: var(--ink-muted);
 }
@@ -1014,7 +1018,7 @@
 }
 
 .th-next-name {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.15;
@@ -1022,7 +1026,7 @@
 }
 
 .th-next-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 12px;
   color: var(--ink-muted);
   margin-bottom: 10px;
@@ -1037,7 +1041,7 @@
 }
 
 .th-next-date {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   color: var(--ink-mid);
 }
@@ -1065,7 +1069,7 @@
 }
 
 .th-next-tval {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   color: var(--ink-mid);
   margin-bottom: 14px;
@@ -1092,7 +1096,7 @@
 }
 
 .vc-title {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.015em;
@@ -1213,7 +1217,7 @@
 }
 
 .vc.today {
-  background: #FFFBF0;
+  background: #fffbf0;
   border-color: var(--gold-bright);
   box-shadow: 0 0 0 3px rgba(200, 154, 43, 0.1);
 }
@@ -1236,7 +1240,7 @@
 }
 
 .vc-dd {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 24px;
   font-weight: 500;
   line-height: 1;
@@ -1272,7 +1276,7 @@
 }
 
 .vc-name {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.25;
@@ -1281,7 +1285,7 @@
 }
 
 .vc-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 10px;
   color: var(--ink-muted);
   margin-bottom: 8px;
@@ -1304,15 +1308,15 @@
 }
 
 .chip-kr {
-  background: #EEF2F8;
-  border-color: #C5D0E2;
-  color: #2A4878;
+  background: #eef2f8;
+  border-color: #c5d0e2;
+  color: #2a4878;
 }
 
 .chip-sh {
-  background: #EEF5E8;
-  border-color: #BFDA9E;
-  color: #436B2A;
+  background: #eef5e8;
+  border-color: #bfda9e;
+  color: #436b2a;
 }
 
 .chip-sp {
@@ -1336,7 +1340,7 @@
 }
 
 .vc-tval {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   color: var(--ink-mid);
 }
@@ -1380,7 +1384,7 @@
 }
 
 .kv-group-h span:first-child {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.015em;
@@ -1437,7 +1441,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.9);
   flex-shrink: 0;
@@ -1448,7 +1452,7 @@
 }
 
 .kvc-name {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.25;
@@ -1457,7 +1461,7 @@
 }
 
 .kvc-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   font-size: 10px;
   color: var(--ink-muted);
   margin-bottom: 7px;
@@ -1514,7 +1518,7 @@
 }
 
 .kashi {
-  background: linear-gradient(135deg, #FDF8EE, #FFF6E8);
+  background: linear-gradient(135deg, #fdf8ee, #fff6e8);
   border: 1px solid rgba(200, 154, 43, 0.38);
   border-radius: 18px;
   padding: 34px;
@@ -1525,7 +1529,7 @@
 }
 
 .kashi-eye {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-style: italic;
   color: var(--accent);
   font-size: 14px;
@@ -1533,7 +1537,7 @@
 }
 
 .kashi-h {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 26px;
   font-weight: 500;
   line-height: 1.15;
@@ -1576,7 +1580,7 @@
 }
 
 .kashi-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: "Noto Serif Devanagari", serif;
   color: var(--accent);
   font-size: 19px;
   line-height: 1;
@@ -1584,7 +1588,7 @@
 }
 
 .kashi-name {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 13.5px;
   font-weight: 500;
 }

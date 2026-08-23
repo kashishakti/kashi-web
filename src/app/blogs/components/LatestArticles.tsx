@@ -9,13 +9,14 @@ const PAGE_SIZE = 6;
 
 interface Props {
   initialBlogs: BlogItem[];
+  initialTotal: number;
 }
 
-const LatestArticles = ({ initialBlogs }: Props) => {
+const LatestArticles = ({ initialBlogs, initialTotal }: Props) => {
   const [blogs, setBlogs] = useState<BlogItem[]>(initialBlogs);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(initialBlogs.length >= PAGE_SIZE);
+  const [hasMore, setHasMore] = useState(initialBlogs.length < initialTotal);
 
   async function loadMore() {
     setLoading(true);
@@ -34,8 +35,10 @@ const LatestArticles = ({ initialBlogs }: Props) => {
         setHasMore(false);
         return;
       }
+      const newCount = blogs.length + incoming.length;
       setBlogs((prev) => [...prev, ...incoming]);
       setPage(nextPage);
+      if (newCount >= initialTotal) setHasMore(false);
     } finally {
       setLoading(false);
     }
@@ -101,12 +104,17 @@ const LatestArticles = ({ initialBlogs }: Props) => {
               style={{
                 textDecoration: "none",
                 color: "inherit",
-                display: "block",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
               }}
             >
               <article
                 className="la-card"
                 style={{
+                  flex: 1,
+                  display: "flex",
+                  flexDirection: "column",
                   background: "#fff",
                   borderRadius: 16,
                   overflow: "hidden",
@@ -158,7 +166,7 @@ const LatestArticles = ({ initialBlogs }: Props) => {
                 </div>
 
                 {/* Card body */}
-                <div style={{ padding: 20 }}>
+                <div style={{ padding: 20, flex: 1, display: "flex", flexDirection: "column" }}>
                   <h3
                     style={{
                                 fontSize: 17,
@@ -172,6 +180,7 @@ const LatestArticles = ({ initialBlogs }: Props) => {
                   </h3>
                   <p
                     style={{
+                      flex: 1,
                       fontFamily: "var(--font-dm-sans), sans-serif",
                       fontSize: "13.5px",
                       color: "#6B5A50",

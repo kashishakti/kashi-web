@@ -1,0 +1,1342 @@
+/* ─────────────────────────────────────────────────────────
+   Home.css — Kashi Shakti Booking Homepage
+   All rules scoped under .ks-home to avoid globals conflict
+   ───────────────────────────────────────────────────────── */
+
+/* ── Token scope ─────────────────────────────────────────── */
+.ks-home {
+  --ks-bg: #f9f5ea;
+  --ks-surface: #fdfaf5;
+  --ks-surface-warm: #fff8ed;
+  --ks-surface-sand: #f5edd8;
+  --ks-surface-deep: #efe2c4;
+  --ks-border: #e2d0a4;
+  --ks-border-soft: #e8d8b8;
+  --ks-hairline: #f0e8d4;
+  --ks-maroon: #7a3c14;
+  --ks-terracotta: #c07840;
+  --ks-terracotta-dk: #a86230;
+  --ks-sage: #4e7a62;
+  --ks-sage-dark: #3a5e4a;
+  --ks-sage-light: #a0c8a8;
+  --ks-sage-tint: #f4faf6;
+  --ks-wa: #25a55a;
+  --ks-wa-dark: #1e8b4b;
+  --ks-wa-tint: #f2fbf5;
+  --ks-wa-bubble: #dcf8c6;
+  --ks-wa-canvas: #ede4d4;
+  --ks-ink: #1a0c00;
+  --ks-ink-2: #2a1800;
+  --ks-ink-3: #3a2010;
+  --ks-text: #5a4020;
+  --ks-muted: #8a6030;
+  --ks-muted-2: #9a7040;
+  --ks-font-display: "Crimson Pro", "Fraunces", Georgia, serif;
+  --ks-font-body: "DM Sans", "Inter", system-ui, sans-serif;
+  --ks-font-deva: "Tiro Devanagari Hindi", "Noto Serif Devanagari", serif;
+  --ks-shadow-card: 0 8px 24px rgba(42, 13, 7, 0.12);
+  --ks-shadow-lift: 0 10px 28px rgba(42, 13, 7, 0.14);
+  --ks-shadow-cta: 0 4px 14px rgba(192, 120, 64, 0.3);
+  --ks-shadow-wa: 0 4px 14px rgba(37, 165, 90, 0.3);
+  --ks-shadow-phone: 0 34px 74px rgba(42, 13, 7, 0.28);
+  --ks-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  background: var(--ks-bg);
+  font-family: var(--ks-font-body);
+  color: var(--ks-ink-2);
+  padding-top: 72px; /* clear fixed navbar */
+}
+
+/* ── Gradient rule ────────────────────────────────────── */
+.ks-rule-gradient {
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--ks-sage),
+    var(--ks-sage-light),
+    var(--ks-terracotta),
+    var(--ks-sage-light),
+    var(--ks-sage)
+  );
+}
+
+/* ── Eyebrow ──────────────────────────────────────────── */
+.ks-eyebrow {
+  font-family: var(--ks-font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ks-terracotta);
+  margin-bottom: 8px;
+}
+.ks-eyebrow--muted {
+  color: var(--ks-muted-2);
+  letter-spacing: 1.4px;
+}
+
+/* ── Pills ────────────────────────────────────────────── */
+.ks-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: var(--ks-surface-sand);
+  border: 1px solid var(--ks-border);
+  color: var(--ks-muted);
+  list-style: none;
+}
+
+.ks-pill__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ks-terracotta);
+  flex-shrink: 0;
+}
+
+.ks-pill--sage {
+  background: var(--ks-wa-tint);
+  border-color: var(--ks-sage-light);
+  color: #2e6048;
+  letter-spacing: 0.6px;
+}
+
+/* ── Tick ─────────────────────────────────────────────── */
+.ks-tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ks-terracotta);
+  color: #fff;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+/* ── Buttons ──────────────────────────────────────────── */
+.ks-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: 50px;
+  padding-inline: 24px;
+  border-radius: 8px;
+  font-family: var(--ks-font-body);
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s var(--ks-ease), border-color 0.2s var(--ks-ease),
+    color 0.2s var(--ks-ease);
+}
+
+.ks-btn--wa {
+  background: var(--ks-wa);
+  color: #fff;
+  border-color: var(--ks-wa);
+  box-shadow: var(--ks-shadow-wa);
+}
+.ks-btn--wa:hover {
+  background: var(--ks-wa-dark);
+  border-color: var(--ks-wa-dark);
+  color: #fff;
+}
+
+.ks-btn--outline {
+  background: var(--ks-surface);
+  border-color: var(--ks-terracotta);
+  color: var(--ks-terracotta);
+}
+.ks-btn--outline:hover {
+  background: var(--ks-surface-sand);
+  color: var(--ks-terracotta);
+}
+
+.ks-btn--wa-outline {
+  background: var(--ks-wa-tint);
+  border-color: var(--ks-wa);
+  color: var(--ks-wa);
+}
+.ks-btn--wa-outline:hover {
+  background: #e4f6ea;
+  color: var(--ks-wa);
+}
+
+.ks-btn--sm {
+  height: 46px;
+  padding-inline: 22px;
+  font-size: 14px;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.ks-hero {
+  padding: 34px 0 0;
+}
+
+.ks-hero__card {
+  background: var(--ks-surface-warm);
+  border: 1px solid var(--ks-border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.ks-hero__copy {
+  padding: 34px 44px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: center;
+}
+
+.ks-hero__badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.ks-hero__title {
+  font-family: var(--ks-font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 3.8vw, 46px);
+  line-height: 1.08;
+  color: var(--ks-ink);
+  margin: 0 0 14px;
+}
+
+.ks-hero__lede {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ks-text);
+  max-width: 46ch;
+  margin: 0 0 22px;
+}
+
+.ks-hero__actions {
+  display: flex;
+  gap: 13px;
+  flex-wrap: wrap;
+  margin: 0 0 22px;
+}
+
+/* ── Pooja tiles ──────────────────────────────────────── */
+.ks-hero__poojas {
+  margin-bottom: 20px;
+}
+
+.ks-pooja-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.ks-pooja-tile {
+  text-align: center;
+}
+
+.ks-pooja-tile__img {
+  height: 64px;
+  border: 1px solid var(--ks-border);
+  border-radius: 9px;
+  overflow: hidden;
+  background: var(--ks-surface-sand);
+  margin: 0 0 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ks-pooja-tile__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ks-pooja-tile__label {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ks-text);
+  display: block;
+}
+
+.ks-tiles-more {
+  font-size: 12px;
+  color: var(--ks-muted-2);
+  margin: 12px 0 0;
+}
+
+/* ── Trust list ───────────────────────────────────────── */
+.ks-hero__trust {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ks-hero__trust li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ks-text);
+}
+
+/* ── Hero aside ───────────────────────────────────────── */
+.ks-hero__aside {
+  padding: 36px 24px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    var(--ks-surface-sand),
+    var(--ks-surface-deep)
+  );
+}
+
+/* ── Hero action strip ────────────────────────────────── */
+.ks-hero__action-strip {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--ks-border);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+.ks-hero__action-card {
+  padding: 22px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  transition: background 0.18s var(--ks-ease);
+}
+
+.ks-hero__action-card--pandit {
+  border-right: 1px solid var(--ks-border);
+  background: var(--ks-surface-warm);
+}
+.ks-hero__action-card--pandit:hover { background: var(--ks-surface-sand); }
+
+.ks-hero__action-card--samagri {
+  background: var(--ks-sage-tint);
+}
+.ks-hero__action-card--samagri:hover { background: #e6f4ea; }
+
+.ks-hero__action-icon {
+  width: 46px;
+  height: 46px;
+  background: var(--ks-surface-sand);
+  border: 1px solid var(--ks-border);
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ks-hero__action-icon--sage {
+  background: var(--ks-surface);
+  border-color: var(--ks-sage-light);
+}
+
+.ks-hero__action-content { flex: 1; }
+
+.ks-hero__action-eyebrow {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  margin: 0 0 3px;
+}
+.ks-hero__action-card--pandit .ks-hero__action-eyebrow { color: var(--ks-terracotta); }
+.ks-hero__action-card--samagri .ks-hero__action-eyebrow { color: var(--ks-sage); }
+
+.ks-hero__action-title {
+  font-family: var(--ks-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ks-ink);
+  line-height: 1.2;
+  margin: 0 0 3px;
+}
+
+.ks-hero__action-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+.ks-hero__action-card--pandit .ks-hero__action-desc { color: var(--ks-muted); }
+.ks-hero__action-card--samagri .ks-hero__action-desc { color: var(--ks-sage-dark); }
+
+.ks-hero__action-arrow {
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.ks-hero__action-card--pandit .ks-hero__action-arrow { color: var(--ks-terracotta); }
+.ks-hero__action-card--samagri .ks-hero__action-arrow { color: var(--ks-sage); }
+
+/* ── Phone mockup ─────────────────────────────────────── */
+.ks-phone {
+  position: relative;
+  width: 368px;
+  max-width: 100%;
+  background: #111014;
+  border-radius: 58px;
+  padding: 9px;
+  box-shadow: var(--ks-shadow-phone), 0 0 0 2px #35313a;
+}
+
+.ks-phone__btn {
+  position: absolute;
+  width: 3.5px;
+  background: #35313a;
+  border-radius: 2px;
+}
+.ks-phone__btn--mute {
+  left: -2.5px;
+  top: 148px;
+  height: 34px;
+}
+.ks-phone__btn--vol-up {
+  left: -2.5px;
+  top: 198px;
+  height: 60px;
+}
+.ks-phone__btn--vol-dn {
+  left: -2.5px;
+  top: 268px;
+  height: 60px;
+}
+.ks-phone__btn--power {
+  right: -2.5px;
+  top: 212px;
+  height: 92px;
+}
+
+.ks-phone__screen {
+  position: relative;
+  background: var(--ks-wa-canvas);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.ks-phone__notch {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 26px;
+  background: #111014;
+  border-radius: 14px;
+  z-index: 2;
+}
+
+/* ── Chat UI ──────────────────────────────────────────── */
+.ks-chat__header {
+  background: var(--ks-wa);
+  padding: 34px 14px 11px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ks-chat__avatar {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: var(--ks-surface-warm);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ks-chat__peer {
+  flex: 1;
+  min-width: 0;
+}
+.ks-chat__name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+}
+.ks-chat__status {
+  font-size: 9.5px;
+  color: #cfebda;
+  display: block;
+}
+
+.ks-chat__log {
+  padding: 14px 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 9px;
+  min-height: 300px;
+  background: var(--ks-wa-canvas);
+  list-style: none;
+  margin: 0;
+}
+
+.ks-chat__row {
+  display: flex;
+}
+.ks-chat__row--out {
+  justify-content: flex-end;
+}
+.ks-chat__row--in {
+  justify-content: flex-start;
+}
+
+.ks-bubble {
+  max-width: 84%;
+  padding: 8px 10px;
+}
+
+.ks-bubble--out {
+  background: var(--ks-wa-bubble);
+  border-radius: 10px 10px 2px 10px;
+}
+
+.ks-bubble--in {
+  background: #fff;
+  border-radius: 10px 10px 10px 2px;
+}
+
+.ks-bubble__media {
+  display: block;
+  width: 100%;
+  height: 88px;
+  border-radius: 9px;
+  margin-bottom: 7px;
+  object-fit: cover;
+}
+
+.ks-bubble__text {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ks-ink-2);
+  margin: 0;
+}
+
+.ks-bubble__meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin: 3px 0 0;
+}
+
+.ks-bubble__time {
+  font-size: 8.5px;
+  color: #9a9080;
+}
+
+.ks-chat__composer {
+  background: #f5f0e6;
+  padding: 8px 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ks-chat__input {
+  flex: 1;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding-inline: 12px;
+  background: #fff;
+  border-radius: 14px;
+  font-size: 10.5px;
+  color: #a89880;
+}
+
+.ks-chat__send {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: var(--ks-wa);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* ── Assurances ───────────────────────────────────────── */
+.ks-assurances-section {
+  padding-block: 30px;
+}
+
+.ks-assurances {
+  list-style: none;
+  padding: 10px 8px;
+  margin: 0;
+  background: var(--ks-surface);
+  border: 1px solid var(--ks-border-soft);
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.ks-assurance {
+  padding: 18px 20px;
+  border-right: 1px solid var(--ks-hairline);
+}
+.ks-assurance:last-child {
+  border-right: 0;
+}
+
+.ks-assurance__head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 9px;
+}
+
+.ks-assurance__icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: var(--ks-surface-sand);
+  border-radius: 9px;
+  flex-shrink: 0;
+}
+
+.ks-assurance__title {
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ks-ink-3);
+  margin: 0;
+}
+
+.ks-assurance__text {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--ks-muted);
+  margin: 0;
+}
+
+/* ── How booking works ────────────────────────────────── */
+.ks-how-section {
+  padding-block: 46px;
+}
+
+.ks-section-head {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.ks-section-head__h2 {
+  font-family: var(--ks-font-display);
+  font-weight: 700;
+  font-size: clamp(25px, 3.2vw, 36px);
+  line-height: 1.14;
+  color: var(--ks-ink);
+  margin: 0;
+}
+
+.ks-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.ks-step {
+  display: flex;
+  gap: 12px;
+}
+
+.ks-step__icon-wrap {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 12px;
+  flex-shrink: 0;
+}
+
+.ks-step__icon {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  background: var(--ks-surface-warm);
+  border: 1.5px solid var(--ks-border);
+  border-radius: 50%;
+}
+
+.ks-step__num {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  background: var(--ks-terracotta);
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ks-surface-warm);
+}
+
+.ks-step__title {
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ks-ink-3);
+  margin: 0 0 5px;
+}
+
+.ks-step__text {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--ks-muted);
+  margin: 0;
+}
+
+.ks-how__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ks-hero {
+    padding-top: 20px;
+  }
+
+  .ks-hero__card {
+    grid-template-columns: 1fr;
+  }
+
+  .ks-hero__copy {
+    padding: 22px 20px 24px;
+  }
+
+  /* Phone mockup hidden on mobile */
+  .ks-hero__aside {
+    display: none;
+  }
+
+  .ks-hero__actions {
+    flex-direction: column;
+  }
+
+  .ks-hero__actions .ks-btn {
+    width: 100%;
+  }
+
+  /* Poojas: 3 cols on mobile */
+  .ks-pooja-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Assurances: 2 cols on mobile */
+  .ks-assurances {
+    background: none;
+    border: 0;
+    padding: 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .ks-assurance {
+    padding: 15px 14px;
+    border: 1px solid var(--ks-border-soft);
+    border-right: 1px solid var(--ks-border-soft);
+    border-radius: 12px;
+    background: var(--ks-surface);
+  }
+
+  .ks-assurance__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ks-assurance__title {
+    font-size: 13px;
+  }
+
+  /* Steps: 1 col on mobile */
+  .ks-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .ks-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .ks-step__icon-wrap {
+    margin: 0;
+    width: 52px;
+    height: 52px;
+  }
+
+  .ks-step__icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .ks-how__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ks-how__actions .ks-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ks-panchang-wrap {
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 680px) {
+  /* Action cards stack: swap right border for bottom border */
+  .ks-hero__action-card--pandit {
+    border-right: none;
+    border-bottom: 1px solid var(--ks-border);
+  }
+}
+
+@media (max-width: 480px) {
+  .ks-hero__trust {
+    gap: 14px;
+  }
+
+  .ks-pooja-tile__img {
+    height: 52px;
+  }
+
+  .ks-panchang-wrap {
+    max-width: 100%;
+  }
+}
+
+/* ── Panchang / calendar promo block ────────────────── */
+.ks-panchang-section {
+  padding-block: 28px 36px;
+}
+
+.ks-panchang-wrap {
+  max-width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    max-width: 50%;
+  }
+
+}
+
+.ks-panchang {
+  background: var(--ks-surface-warm);
+  border: 1px solid var(--ks-border);
+  border-radius: 14px;
+  padding: 20px 18px;
+}
+
+.ks-panchang__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 18px;
+}
+
+.ks-panchang__icon-wrap {
+  width: 42px;
+  height: 42px;
+  background: var(--ks-surface-deep);
+  border: 1px solid var(--ks-border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ks-panchang__title {
+  font-family: var(--ks-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ks-ink);
+  line-height: 1.22;
+  margin: 0 0 3px;
+}
+
+.ks-panchang__subtitle {
+  font-size: 12px;
+  color: var(--ks-muted);
+}
+
+.ks-panchang__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.ks-panchang__item {
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+  padding: 6px 4px;
+  transition: background 0.15s var(--ks-ease);
+}
+
+.ks-panchang__item:hover {
+  background: var(--ks-surface-sand);
+}
+
+.ks-panchang__item:hover .ks-panchang__item-label {
+  color: var(--ks-terracotta);
+}
+
+.ks-panchang__item-icon {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.ks-panchang__item-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--ks-text);
+  line-height: 1.2;
+}
+
+/* ── Eyebrow sage variant ────────────────────────── */
+.ks-eyebrow--sage { color: var(--ks-sage); }
+
+/* ── Samagri preview section ─────────────────────── */
+.ks-samagri-preview {
+  padding-block: 16px 32px;
+}
+
+.ks-samagri-preview__card {
+  background: var(--ks-surface-warm);
+  border: 1px solid var(--ks-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ks-samagri-preview__body {
+  padding: 34px 34px 32px;
+}
+
+.ks-samagri-preview__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.ks-samagri-preview__title {
+  font-family: var(--ks-font-display);
+  font-size: clamp(27px, 3.2vw, 34px);
+  font-weight: 700;
+  color: var(--ks-ink);
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+
+.ks-samagri-preview__lede {
+  font-size: 14.5px;
+  color: var(--ks-text);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 560px;
+}
+
+.ks-samagri-preview__badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ks-surface-sand);
+  border: 1px solid var(--ks-border);
+  border-radius: 20px;
+  padding: 7px 16px;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ks-muted);
+  letter-spacing: 0.8px;
+}
+
+.ks-samagri-preview__badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--ks-terracotta);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ks-samagri-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.ks-samagri-preview__option {
+  background: var(--ks-surface);
+  border: 1.5px solid var(--ks-border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ks-samagri-preview__option--sage { border-color: var(--ks-sage-light); }
+
+.ks-samagri-preview__option-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ks-samagri-preview__option-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--ks-surface-sand);
+  border: 1px solid var(--ks-border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ks-samagri-preview__option-icon--sage {
+  background: var(--ks-sage-tint);
+  border-color: var(--ks-sage-light);
+}
+
+.ks-samagri-preview__option-eyebrow {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--ks-terracotta);
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  margin: 0 0 2px;
+}
+
+.ks-samagri-preview__option-eyebrow--sage { color: var(--ks-sage); }
+
+.ks-samagri-preview__option-title {
+  font-family: var(--ks-font-display);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ks-ink);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.ks-samagri-preview__option-desc {
+  font-size: 13px;
+  color: var(--ks-muted);
+  line-height: 1.6;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.ks-samagri-preview__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.ks-samagri-preview__bullets li {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  font-size: 12.5px;
+  color: var(--ks-text);
+  line-height: 1.5;
+}
+
+.ks-samagri-preview__check {
+  color: var(--ks-sage);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.ks-samagri-preview__kits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.ks-samagri-preview__kit-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ks-surface-warm);
+  border: 1px solid var(--ks-border-soft);
+  border-radius: 9px;
+  padding: 10px 13px;
+}
+
+.ks-samagri-preview__kit-info { flex: 1; min-width: 0; }
+
+.ks-samagri-preview__kit-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ks-ink-3);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.ks-samagri-preview__kit-items {
+  font-size: 10.5px;
+  color: var(--ks-muted);
+  margin: 0;
+}
+
+.ks-samagri-preview__kit-price {
+  font-family: var(--ks-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ks-ink-3);
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.ks-samagri-preview__cta {
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s var(--ks-ease), color 0.18s var(--ks-ease);
+  margin-top: auto;
+  border: 1.5px solid transparent;
+}
+
+.ks-samagri-preview__cta--primary {
+  background: var(--ks-terracotta);
+  color: var(--ks-surface-warm);
+  box-shadow: var(--ks-shadow-cta);
+  border-color: var(--ks-terracotta);
+}
+.ks-samagri-preview__cta--primary:hover {
+  background: var(--ks-terracotta-dk);
+  border-color: var(--ks-terracotta-dk);
+  color: var(--ks-surface-warm);
+}
+
+.ks-samagri-preview__cta--sage {
+  background: var(--ks-sage-tint);
+  border-color: var(--ks-sage);
+  color: var(--ks-sage);
+}
+.ks-samagri-preview__cta--sage:hover {
+  background: #e6f4ea;
+  color: var(--ks-sage-dark);
+}
+
+.ks-samagri-preview__promo {
+  background: var(--ks-surface-sand);
+  border: 1px dashed var(--ks-border);
+  border-radius: 11px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ks-samagri-preview__promo-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.ks-samagri-preview__promo-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--ks-surface);
+  border: 1px solid var(--ks-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 15px;
+}
+
+.ks-samagri-preview__promo-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ks-ink-3);
+  margin: 0 0 2px;
+}
+
+.ks-samagri-preview__promo-text {
+  font-size: 12.5px;
+  color: var(--ks-muted);
+  margin: 0;
+}
+
+.ks-samagri-preview__promo-cta {
+  height: 42px;
+  padding-inline: 20px;
+  background: var(--ks-maroon);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ks-surface-warm);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.18s var(--ks-ease);
+  white-space: nowrap;
+}
+.ks-samagri-preview__promo-cta:hover {
+  background: var(--ks-terracotta);
+  color: var(--ks-surface-warm);
+}
+
+@media (max-width: 900px) {
+  .ks-samagri-preview__body { padding: 22px 20px 20px; }
+  .ks-samagri-preview__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ── Blog preview section ────────────────────────── */
+.ks-blogs-section {
+  padding-block: 46px 56px;
+  border-top: 1px solid var(--ks-border-soft);
+}
+
+.ks-blogs-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.ks-blogs-head__h2 {
+  font-family: var(--ks-font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.14;
+  color: var(--ks-ink);
+  margin: 0;
+}
+
+.ks-blogs-head__more {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ks-terracotta);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ks-blogs-head__more:hover {
+  text-decoration: underline;
+}
+
+/* ── Mobile sticky action bar ────────────────────── */
+.ks-sticky-bar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .ks-sticky-bar {
+    display: flex;
+    gap: 10px;
+    position: sticky;
+    bottom: 0;
+    z-index: 55;
+    background: var(--ks-surface);
+    border-top: 1px solid var(--ks-border);
+    padding: 10px 18px;
+    box-shadow: 0 -4px 16px rgba(42, 13, 7, 0.07);
+  }
+
+  .ks-sticky-bar__btn {
+    flex: 1;
+    height: 46px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--ks-font-body);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+
+  .ks-sticky-bar__btn--wa {
+    background: var(--ks-wa);
+    color: #fff;
+  }
+
+  .ks-sticky-bar__btn--enquiry {
+    background: var(--ks-surface);
+    border: 1.5px solid var(--ks-terracotta);
+    color: var(--ks-terracotta);
+  }
+}

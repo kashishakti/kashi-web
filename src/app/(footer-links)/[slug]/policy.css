@@ -1,0 +1,9 @@
+.policy-body {
+  padding: 32px 36px;
+}
+
+@media (max-width: 768px) {
+  .policy-body {
+    padding: 22px 18px;
+  }
+}

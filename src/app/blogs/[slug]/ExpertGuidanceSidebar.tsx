@@ -22,7 +22,7 @@ export default function ExpertGuidanceSidebar() {
 
   return (
     <>
-      <aside className="blog-detail__right">
+      <aside className="blog__right">
         <div className="expert-guidance">
           <div className="expert-guidance__accent" />
           <div className="expert-guidance__body">

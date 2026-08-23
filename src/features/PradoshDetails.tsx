@@ -71,9 +71,9 @@ const PradoshDetails = ({ slug, pradoshDetailData }: PradoshDetailsProps) => {
       <div className="pradosh-hero" style={{ paddingTop: '122px' }}>
         <div className="pradosh-trishul">
           <svg width="240" height="400" viewBox="0 0 240 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="120" y1="60" x2="120" y2="390" stroke="#9A88E0" stroke-width="12" stroke-linecap="round"></line>
+      <line x1="120" y1="60" x2="120" y2="390" stroke="#9A88E0" strokeWidth="12" stroke-linecap="round"></line>
 
-      <path d="M120 60 Q108 38 102 16 M120 60 L120 16 M120 60 Q132 38 138 16" stroke="#C0B0F0" stroke-width="7" fill="none" stroke-linecap="round"></path>
+      <path d="M120 60 Q108 38 102 16 M120 60 L120 16 M120 60 Q132 38 138 16" stroke="#C0B0F0" strokeWidth="7" fill="none" stroke-linecap="round"></path>
 
       <ellipse cx="98" cy="180" rx="20" ry="34" fill="#7060B0" opacity="0.85"></ellipse>
       <ellipse cx="142" cy="180" rx="20" ry="34" fill="#7060B0" opacity="0.85"></ellipse>

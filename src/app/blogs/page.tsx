@@ -1,4 +1,6 @@
 import { redirect } from 'next/navigation'
+import { Suspense } from 'react'
+import type { Metadata } from 'next'
 import { BASE_URL, REVALIDATE } from '@/constants'
 import BlogHero from './components/BlogHero'
 import CategoryFilters from './components/CategoryFilters'
@@ -6,6 +8,7 @@ import FeaturedSection from './components/FeaturedSection'
 import PopularThisWeek from './components/PopularThisWeek'
 import LatestArticles from './components/LatestArticles'
 import CategoryArticles from './components/CategoryArticles'
+import CardGridSkeleton from './components/CardGridSkeleton'
 import type { BlogPageData, Category, BlogItem } from './types'
 
 // Featured blog, editor's picks, and popular-this-week come from a single CMS page config.
@@ -49,22 +52,43 @@ async function getBlogsByCategory(categorySlug: string): Promise<BlogItem[]> {
 }
 
 // Initial page of blogs shown in the Latest Articles section.
-async function getBlogs(): Promise<BlogItem[]> {
+async function getBlogs(): Promise<{ blogs: BlogItem[]; total: number }> {
   try {
     const res = await fetch(
       `${BASE_URL}/blogs?page=1&pageSize=6`,
       { next: { revalidate: REVALIDATE } }
     )
-    if (!res.ok) return []
+    if (!res.ok) return { blogs: [], total: 0 }
+    const total = parseInt(res.headers.get('x-total-count') ?? '0', 10)
     const json = await res.json()
-    return json ?? []
+    return { blogs: json ?? [], total }
   } catch {
-    return []
+    return { blogs: [], total: 0 }
   }
 }
 
 interface PageProps {
   searchParams: Promise<{ category?: string }>
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await getBlogPageData()
+  const seo = pageData?.SEO
+  return {
+    title: seo?.MetaTitle ?? 'Blog — Kashi Shakti',
+    description: seo?.MetaDescription ?? undefined,
+    robots: seo?.MetaRobots ?? 'index,follow',
+    openGraph: {
+      title: seo?.Open_Graph_Title ?? seo?.MetaTitle ?? undefined,
+      description: seo?.Open_Graph_Description ?? seo?.MetaDescription ?? undefined,
+      images: seo?.MetaImage?.url ? [{ url: seo.MetaImage.url }] : undefined,
+    },
+  }
+}
+
+async function CategoryArticlesLoader({ categorySlug }: { categorySlug: string }) {
+  const blogs = await getBlogsByCategory(categorySlug)
+  return <CategoryArticles initialBlogs={blogs} />
 }
 
 export default async function BlogsPage({ searchParams }: PageProps) {
@@ -76,20 +100,20 @@ export default async function BlogsPage({ searchParams }: PageProps) {
     const activeCategory = categories.find((c) => c.Slug === categorySlug)
     if (!activeCategory) redirect('/blogs')
 
-    const initialBlogs = await getBlogsByCategory(categorySlug)
-
     return (
       <div style={{ background: '#FAF7F2', minHeight: '100vh', fontFamily: "var(--font-playfair), serif" }}>
         <BlogHero />
         <CategoryFilters categories={categories} activeSlug={categorySlug} />
-        <CategoryArticles initialBlogs={initialBlogs} />
+        <Suspense fallback={<CardGridSkeleton />}>
+          <CategoryArticlesLoader categorySlug={categorySlug} />
+        </Suspense>
         <div style={{ height: 80 }} />
       </div>
     )
   }
 
   // Home view: full layout with featured, popular, and latest sections.
-  const [pageData, initialBlogs] = await Promise.all([
+  const [pageData, { blogs: initialBlogs, total: initialTotal }] = await Promise.all([
     getBlogPageData(),
     getBlogs(),
   ])
@@ -104,7 +128,7 @@ export default async function BlogsPage({ searchParams }: PageProps) {
       <CategoryFilters categories={categories} />
       <FeaturedSection featured={featured} editorsPicks={editorsPicks} />
       <PopularThisWeek blogs={popularBlogs} />
-      <LatestArticles initialBlogs={initialBlogs} />
+      <LatestArticles initialBlogs={initialBlogs} initialTotal={initialTotal} />
       <div style={{ height: 80 }} />
     </div>
   )

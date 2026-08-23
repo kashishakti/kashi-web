@@ -278,7 +278,11 @@ export default function MantraCardModal({ onClose, blogSlug }: Props) {
             <div className={`mc-field${errors.intentionSlug ? ' mc-field--error' : ''}`}>
               <div className="mc-field-label">Your Intention</div>
               {intentionsLoading ? (
-                <div className="mc-loading">Loading intentions…</div>
+                <div className="mc-grid-2">
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <div key={i} className="skeleton" style={{ height: 58 }} />
+                  ))}
+                </div>
               ) : (
                 <div className="mc-grid-2">
                   {intentions.map(intent => (

@@ -1,0 +1,58 @@
+.page-card {
+  min-height: 100vh;
+  background: #FAF7F2;
+  margin-top: 72px;
+  padding: 0 0 80px;
+}
+
+.page-card__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px clamp(16px, 4vw, 40px) 0;
+}
+
+.page-card__card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.page-card__accent-bar {
+  height: 3px;
+  background: linear-gradient(to right, #4E7A62, #A0C8A8, #C07840, #A0C8A8, #4E7A62);
+}
+
+.page-card__header {
+  padding: 36px 40px 28px;
+}
+
+.page-card__title {
+  font-family: inherit;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 0 0 18px;
+}
+
+.page-card__subtitle {
+  font-size: 12px;
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .page-card {
+    margin-top: 72px;
+    padding: 0 0 60px;
+  }
+
+  .page-card__inner {
+    padding-top: 20px;
+  }
+
+  .page-card__header {
+    padding: 24px 20px 20px;
+  }
+}

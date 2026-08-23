@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780" role="img" aria-label="A pandit offering into a havan fire at a family's home while the family sits with hands joined, with a kalash, brass thali, diyas and a bag of pooja samagri beneath a decorated arch">
+  <rect x="0" y="0" width="1200" height="780" fill="#F7EEDA"/>
+  <rect x="0" y="0" width="1200" height="300" fill="#FFF9EC" opacity=".7"/>
+  <path d="M262 660 V330 Q262 132 600 132 Q938 132 938 330 V660 Z" fill="#FFF9EC"/>
+  <path d="M262 660 V330 Q262 132 600 132 Q938 132 938 330 V660 Z" fill="none" stroke="#C8A870" stroke-width="4"/>
+  <path d="M300 660 V336 Q300 172 600 172 Q900 172 900 336 V660 Z" fill="#FDFAF5"/>
+  <rect x="300" y="336" width="600" height="40" fill="#EFE2C4" opacity=".55"/>
+  <path d="M313 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M339 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M365 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M391 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M417 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M443 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M469 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M495 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M521 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M547 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M573 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M599 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M625 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M651 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M677 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M703 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M729 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M755 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M781 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M807 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M833 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M859 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/><path d="M885 336 l13 20 l-13 20 l-13 -20 Z" fill="none" stroke="#C8A870" stroke-width="1.4" opacity=".65"/>
+  <g fill="none" stroke="#C8A870" stroke-width="3" opacity=".85">
+    <path d="M330 344 Q336 300 372 296 Q400 292 408 322"/>
+    <path d="M408 322 Q420 268 468 258 Q516 248 540 232"/>
+    <path d="M540 232 Q570 214 600 212 Q630 214 660 232"/>
+    <path d="M660 232 Q684 248 732 258 Q780 268 792 322"/>
+    <path d="M792 322 Q800 292 828 296 Q864 300 870 344"/>
+  </g>
+  <path d="M540 300 V244 Q540 202 600 202 Q660 202 660 244 V300 Z" fill="#F5EDD8"/>
+  <path d="M540 300 V244 Q540 202 600 202 Q660 202 660 244 V300 Z" fill="none" stroke="#C8A870" stroke-width="3"/>
+  <text x="600" y="278" font-size="62" text-anchor="middle" fill="#C07840" opacity=".75" font-family="Tiro Devanagari Hindi, serif">ॐ</text>
+  <g transform="translate(516 306) scale(0.52)">
+  <ellipse cx="0" cy="10" rx="30" ry="6" fill="#1A0C00" opacity=".07"/>
+  <path d="M-28 0 Q0 20 28 0 L23 12 Q0 25 -23 12 Z" fill="#C07840"/>
+  <ellipse cx="0" cy="0" rx="28" ry="6" fill="#E8A860"/>
+  <path d="M0 -24 q9 13 3 21-2 4-3 4t-3-4q-6-8 3-21" fill="#F5A623"/>
+  <path d="M0 -14 q4 7 1 12-1 2-1 2t-1-2q-3-5 1-12" fill="#FFF0C2"/>
+  </g>
+  <g transform="translate(684 306) scale(0.52)">
+  <ellipse cx="0" cy="10" rx="30" ry="6" fill="#1A0C00" opacity=".07"/>
+  <path d="M-28 0 Q0 20 28 0 L23 12 Q0 25 -23 12 Z" fill="#C07840"/>
+  <ellipse cx="0" cy="0" rx="28" ry="6" fill="#E8A860"/>
+  <path d="M0 -24 q9 13 3 21-2 4-3 4t-3-4q-6-8 3-21" fill="#F5A623"/>
+  <path d="M0 -14 q4 7 1 12-1 2-1 2t-1-2q-3-5 1-12" fill="#FFF0C2"/>
+  </g>
+  <rect x="120" y="212" width="58" height="448" fill="#EFE2C4"/>
+  <rect x="120" y="212" width="16" height="448" fill="#E8D5B0" opacity=".7"/>
+  <rect x="108" y="192" width="82" height="26" rx="5" fill="#C8A870" opacity=".55"/>
+  <rect x="1022" y="212" width="58" height="448" fill="#EFE2C4"/>
+  <rect x="1064" y="212" width="16" height="448" fill="#E8D5B0" opacity=".7"/>
+  <rect x="1010" y="192" width="82" height="26" rx="5" fill="#C8A870" opacity=".55"/>
+  <g transform="translate(196 96)">
+  <path d="M0 0 V108" stroke="#A87F32" stroke-width="2.5" stroke-dasharray="5 4"/>
+  <g transform="translate(0 108) scale(1.05)">
+    <path d="M-4 0 h8 v6 h-8 Z" fill="#A87F32"/>
+    <path d="M-22 34 Q-22 6 0 6 Q22 6 22 34 Z" fill="#CFA24E"/>
+    <path d="M-22 34 Q-22 6 0 6 Q6 6 6 34 Z" fill="#C9A24A" opacity=".45"/>
+    <ellipse cx="0" cy="34" rx="22" ry="5" fill="#A87F32"/>
+    <ellipse cx="0" cy="41" rx="4.5" ry="6" fill="#A87F32"/>
+  </g>
+  </g>
+  <g transform="translate(1004 96)">
+  <path d="M0 0 V140" stroke="#A87F32" stroke-width="2.5" stroke-dasharray="5 4"/>
+  <g transform="translate(0 140) scale(1.05)">
+    <path d="M-4 0 h8 v6 h-8 Z" fill="#A87F32"/>
+    <path d="M-22 34 Q-22 6 0 6 Q22 6 22 34 Z" fill="#CFA24E"/>
+    <path d="M-22 34 Q-22 6 0 6 Q6 6 6 34 Z" fill="#C9A24A" opacity=".45"/>
+    <ellipse cx="0" cy="34" rx="22" ry="5" fill="#A87F32"/>
+    <ellipse cx="0" cy="41" rx="4.5" ry="6" fill="#A87F32"/>
+  </g>
+  </g>
+  <path d="M0 660 H1200 V780 H0 Z" fill="#F5EDD8"/>
+  <path d="M0 660 H1200" stroke="#C8A870" stroke-width="4"/>
+  <ellipse cx="600" cy="676" rx="470" ry="76" fill="#E8D5B0"/>
+  <ellipse cx="600" cy="676" rx="470" ry="76" fill="none" stroke="#B0906A" stroke-width="3"/>
+  <ellipse cx="600" cy="676" rx="422" ry="62" fill="none" stroke="#C8A870" stroke-width="2.5"/>
+  <g stroke="#B0906A" stroke-width="2" opacity=".5"><path d="M200 690 h800"/><path d="M240 706 h720"/></g>
+  <g fill="none" stroke="#C07840" stroke-width="2.6" opacity=".55">
+    <ellipse cx="600" cy="684" rx="150" ry="34"/><ellipse cx="600" cy="684" rx="118" ry="26"/>
+  </g>
+  <g transform="translate(392 668) scale(1.02)">
+  <ellipse cx="0" cy="4" rx="84" ry="15" fill="#1A0C00" opacity=".08"/>
+  <path d="M-82 2 Q-68 -36 -20 -38 L20 -38 Q68 -36 82 2 Z" fill="#7A3C14"/>
+  <path d="M-48 -32 Q-44 -136 0 -142 Q44 -136 48 -32 Z" fill="#C07840"/>
+  <path d="M-46 -38 Q-40 -122 -6 -138 L18 -44 Z" fill="#C89268"/>
+  <path d="M-30 -128 Q-6 -92 10 -46" fill="none" stroke="#FDFAF5" stroke-width="3.4" opacity=".95"/>
+  <path d="M40 -114 Q76 -96 92 -70 L76 -58 Q62 -82 30 -96 Z" fill="#C89268"/>
+  <g transform="translate(96 -66) rotate(28)">
+    <path d="M0 0 h44" stroke="#A87F32" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="50" cy="2" rx="11" ry="7" fill="#CFA24E"/>
+    <ellipse cx="50" cy="0" rx="8" ry="4.6" fill="#C9A24A"/>
+  </g>
+  <path d="M-44 -69 Q-32 -55 -14 -60" fill="none" stroke="#C89268" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="0" cy="-170" r="30" fill="#C89268"/>
+  <path d="M-30 -176 Q-28 -206 0 -206 Q28 -206 30 -176 Q0 -190 -30 -176 Z" fill="#9A6B1E"/>
+  </g>
+  <g transform="translate(600 660) scale(1)">
+  <path d="M0 -152 Q34 -88 16 -40 Q8 -20 0 -20 Q-8 -20 -16 -40 Q-34 -88 0 -152" fill="#F5A623"/>
+  <path d="M0 -112 Q20 -70 8 -34 Q4 -24 0 -24 Q-4 -24 -8 -34 Q-20 -70 0 -112" fill="#FFD97A"/>
+  <path d="M-40 -22 l80 -10" stroke="#9A5A28" stroke-width="9" stroke-linecap="round"/>
+  <path d="M-38 -12 l76 12" stroke="#5E2D0E" stroke-width="9" stroke-linecap="round"/>
+  <path d="M-80 -8 H80 L62 46 H-62 Z" fill="#C07840"/>
+  <path d="M-80 -8 H80 L74 8 H-74 Z" fill="#9A5A28"/>
+  <path d="M-62 46 H62 L57 58 H-57 Z" fill="#7A3C14"/>
+  </g>
+</svg>

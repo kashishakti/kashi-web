@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500&family=Tiro+Devanagari+Hindi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Fraunces:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500&family=Tiro+Devanagari+Hindi&display=swap');
 /* ══════════════════════════════════════════
    KASHI SHAKTI - EXTENDED PRODUCTION CSS
    ══════════════════════════════════════════ */
@@ -57,7 +57,19 @@ body {
   overflow-x: hidden;
 }
 
-/* 2. Typography System */
+/* 2. Skeleton */
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0 }
+  100% { background-position: -200% 0 }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f0ebe0 25%, #e8e0d0 50%, #f0ebe0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+  border-radius: 8px;
+}
+
+/* 3. Typography System */
 .serif { font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif; font-optical-sizing: auto; }
 .display { font-family: 'Fraunces', serif; font-weight: 500; letter-spacing: -0.02em; }
 .devanagari { font-family: 'Noto Serif Devanagari', serif; }
