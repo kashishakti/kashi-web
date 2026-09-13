@@ -504,7 +504,7 @@
   .enq-section { padding-block: 28px; }
   .enq-field__row { grid-template-columns: 1fr; }
   .enq-step2-actions { flex-direction: column; }
-  .enq-step2-actions .enq-btn { width: 100%; }
+  .enq-step2-actions .enq-btn { width: 100%; min-height: 50px; flex: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
